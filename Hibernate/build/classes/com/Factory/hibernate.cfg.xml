@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+<!--JDBC代码配置  -->
+<property name="url">jdbc:mysql://localhost:3306/test</property>
+<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+<property name="username">root</property>
+<property name="password">>123456</property>
+<property name="driver">com.mysql.jdbc.Driver</property>
+<property name="current_session_context_class">thread</property>
+
+<!--指定puser类为实体类  -->
+<mapping  class="com.entity.puser"/>
+</session-factory>
+</hibernate-configuration>
+
