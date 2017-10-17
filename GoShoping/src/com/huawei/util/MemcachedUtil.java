@@ -264,5 +264,16 @@ public class MemcachedUtil {
 				e.printStackTrace();
 			}
 		}
+		public static void main(String[] args) {
+			MemcachedUtil util = new MemcachedUtil();
+			util.set("key","789");
+		
+		
+			
+			
+			
+			
+			
+		}
 	}
 }
