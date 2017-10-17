@@ -85,5 +85,12 @@ public class RedisUtil {
 		return redis.getSet(key, value);
 	}
 	
-
+    public static void main(String[] args) {
+		RedisUtil util = new RedisUtil();
+		Jedis dis = util.getRedis();
+		dis.set("key","demo");
+		System.out.println(dis.get("key"));
+		
+		
+	}
 }
