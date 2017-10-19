@@ -86,6 +86,21 @@ public class StingUtil {
 		b=m.matches();
 		return b;
 	}
+	
+	/**
+	 * 
+	 * @param message
+	 * @param str
+	 * @return
+	 */
+	public static String toAppend(String message,String str) 
+	{   
+		StringBuffer buffer = new StringBuffer(message);
+		buffer.append(str);
+		return buffer.toString();
+	}
+	
+	
 	 public static void main(String[] args) {
 	        InputStream ins = null;
 	        String[] cmd = new String[] { "cmd.exe","/c","F:\\apache-maven-3.2.5\\bin\\a.bat" };  // ÃüÁî
