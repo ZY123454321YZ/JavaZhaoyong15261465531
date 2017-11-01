@@ -12,6 +12,14 @@ public class PropertiesUtil {
 		FileInputStream fileInputStream = new FileInputStream(f);
 		Properties pro = new Properties();
 		pro.load(fileInputStream);
+		String value = (String) pro.get("key");
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				
+			}
+		}).start();
 		return pro;
 	}
 
