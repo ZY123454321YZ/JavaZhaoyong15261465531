@@ -20,7 +20,4 @@ public class MybatisUtil {
 	public static SqlSession getSession(){
 		return  sf.openSession();
 	}
-  
-
-	
 }
