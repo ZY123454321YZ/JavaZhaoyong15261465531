@@ -3,7 +3,6 @@ import java.util.HashMap;
 import java.util.List;  
 import java.util.Map;  
 import java.util.Properties;  
-  
 import kafka.consumer.ConsumerConfig;  
 import kafka.consumer.ConsumerIterator;  
 import kafka.consumer.KafkaStream;  
@@ -53,5 +52,17 @@ public class KafkaConsumer {
   
     public static void main(String[] args) {  
         new KafkaConsumer().consume();  
+        new Thread(
+        		new Runnable() {
+			
+			@Override
+			public void run() {
+				
+			}
+		}).start();
+        
+        
+        
     }  
+    
 }  

@@ -35,6 +35,7 @@ public class ReflectTest {
 		for(Field file:fields){
         	System.out.println(file.getName()+"="+file.get(o));
         }
+		
 	}
 	
 	
