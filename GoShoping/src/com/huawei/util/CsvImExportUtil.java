@@ -34,30 +34,45 @@ public class CsvImExportUtil {
                 }  
             }  
             isSucess=true;  
-        } catch (Exception e) {  
+        } 
+        catch (Exception e)
+        {  
             isSucess=false;  
-        }finally{  
-            if(bw!=null){  
-                try {  
+        }
+        finally
+        {  
+            if(bw!=null)
+            {  
+                try 
+                {  
                     bw.close();  
                     bw=null;  
-                } catch (IOException e) {  
+                } 
+                catch (IOException e)
+                {  
                     e.printStackTrace();  
                 }   
             }  
-            if(osw!=null){  
-                try {  
+            if(osw!=null)
+            {  
+                try
+                {  
                     osw.close();  
                     osw=null;  
-                } catch (IOException e) {  
+                } catch (IOException e)
+                {  
                     e.printStackTrace();  
                 }   
             }  
-            if(out!=null){  
-                try {  
+            if(out!=null)
+            {  
+                try 
+                {  
                     out.close();  
                     out=null;  
-                } catch (IOException e) {  
+                } 
+                catch (IOException e)
+                {  
                     e.printStackTrace();  
                 }   
             }  
@@ -72,23 +87,34 @@ public class CsvImExportUtil {
      * @param file csv文件(路径+文件) 
      * @return 
      */  
-    public static List<String> importCsv(File file){  
+    public static List<String> importCsv(File file)
+    {  
         List<String> dataList=new ArrayList<String>();  
           
         BufferedReader br=null;  
-        try {   
+        try 
+        {   
             br = new BufferedReader(new FileReader(file));  
             String line = "";   
-            while ((line = br.readLine()) != null) {   
+            while ((line = br.readLine()) != null)
+            {   
                 dataList.add(line);  
             }  
-        }catch (Exception e) {  
-        }finally{  
-            if(br!=null){  
-                try {  
+        }
+        catch (Exception e)
+        {  
+        }
+        finally
+        {  
+            if(br!=null)
+            {  
+                try
+                {  
                     br.close();  
                     br=null;  
-                } catch (IOException e) {  
+                } 
+                catch (IOException e)
+                {  
                     e.printStackTrace();  
                 }  
             }  

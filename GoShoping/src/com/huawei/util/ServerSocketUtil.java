@@ -9,7 +9,8 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ServerSocketUtil {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException 
+	{
 		ServerSocket serverSocket = new ServerSocket(5200);
 		Socket socket = serverSocket.accept();
 		BufferedReader bufferedReader =
