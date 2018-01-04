@@ -14,7 +14,8 @@ import com.danga.MemCached.SockIOPool;
 public class MemcachedUtil {
 
 	private static MemCachedClient memCachedClient;
-	static {
+	static 
+	{
 		/************************************ 配置Memcached **************************************/
 		SockIOPool sockIOPool = SockIOPool.getInstance();
 
@@ -32,13 +33,15 @@ public class MemcachedUtil {
 		sockIOPool.setSocketConnectTO(0); // 连接建立时对超时的控制
 
 		sockIOPool.initialize(); // 初始化连接池
-		if (memCachedClient == null) {
+		if (memCachedClient == null)
+		{
 			memCachedClient = new MemCachedClient();
 			memCachedClient.setPrimitiveAsString(true); // 是否将基本类型转换为String方法
 		}
 	}
 
-	private MemcachedUtil() {
+	private MemcachedUtil() 
+	{
 	}
 
 	/**
@@ -46,10 +49,13 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	public static boolean set(String key, Object value) {
-		try {
+	public static boolean set(String key, Object value) 
+	{
+		try 
+		{
 			return memCachedClient.set(key, value);
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			MemcachedLogUtils.writeLog("Memcached set方法报错，key值：" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
@@ -61,10 +67,13 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	public static boolean set(String key, Object value, Date expire) {
-		try {
+	public static boolean set(String key, Object value, Date expire)
+	{
+		try 
+		{
 			return memCachedClient.set(key, value, expire);
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			MemcachedLogUtils.writeLog("Memcached set方法报错，key值：" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
@@ -75,16 +84,23 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	public static boolean add(String key, Object value) {
-		try {
-			if (get(key) != null) {
+	public static boolean add(String key, Object value) 
+	{
+		try
+		{
+			if (get(key) != null) 
+			{
 				MemcachedLogUtils.writeLog("Memcached add方法报错，key值：" + key + "\r\n"
 						+ exceptionWrite(new Exception("Memcached内存缓存中已经存在该键值对")));
 				return false;
-			} else {
+			}
+			else
+			{
 				return memCachedClient.add(key, value);
 			}
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 			MemcachedLogUtils.writeLog("Memcached add方法报错，key值：" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
@@ -96,16 +112,23 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	public static boolean add(String key, Object value, Date expire) {
-		try {
-			if (get(key) != null) {
+	public static boolean add(String key, Object value, Date expire) 
+	{
+		try 
+		{
+			if (get(key) != null)
+			{
 				MemcachedLogUtils.writeLog("Memcached add方法报错，key值：" + key + "\r\n"
 						+ exceptionWrite(new Exception("Memcached内存缓存中已经存在该键值对")));
 				return false;
-			} else {
+			} 
+			else
+			{
 				return memCachedClient.add(key, value, expire);
 			}
-		} catch (Exception e) {
+		} 
+		catch (Exception e)
+		{
 			MemcachedLogUtils.writeLog("Memcached add方法报错，key值：" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
@@ -116,10 +139,14 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	public static boolean replace(String key, Object newValue) {
-		try {
+	public static boolean replace(String key, Object newValue)
+	{
+		try 
+		{
 			return memCachedClient.replace(key, newValue);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 			MemcachedLogUtils.writeLog("Memcached replace方法报错，key值：" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
@@ -131,10 +158,14 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	public static boolean replace(String key, Object newValue, Date expireDate) {
-		try {
+	public static boolean replace(String key, Object newValue, Date expireDate)
+	{
+		try 
+		{
 			return memCachedClient.replace(key, newValue, expireDate);
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			MemcachedLogUtils.writeLog("Memcached replace方法报错，key值：" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
@@ -145,10 +176,14 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	public static Object get(String key) {
-		try {
+	public static Object get(String key)
+	{
+		try 
+		{
 			return memCachedClient.get(key);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 			MemcachedLogUtils.writeLog("Memcached get方法报错，key值：" + key + "\r\n" + exceptionWrite(e));
 			return null;
 		}
@@ -159,10 +194,14 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	public static boolean delete(String key) {
-		try {
+	public static boolean delete(String key) 
+	{
+		try 
+		{
 			return memCachedClient.delete(key);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 			MemcachedLogUtils.writeLog("Memcached delete方法报错，key值：" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
@@ -173,10 +212,14 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	public static boolean delete(String key, Date expireDate) {
-		try {
+	public static boolean delete(String key, Date expireDate)
+	{
+		try 
+		{
 			return memCachedClient.delete(key, expireDate);
-		} catch (Exception e) {
+		} 
+		catch (Exception e)
+		{
 			MemcachedLogUtils.writeLog("Memcached delete方法报错，key值：" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
@@ -187,10 +230,14 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	public static boolean flashAll() {
-		try {
+	public static boolean flashAll() 
+	{
+		try
+		{
 			return memCachedClient.flushAll();
-		} catch (Exception e) {
+		} 
+		catch (Exception e)
+		{
 			MemcachedLogUtils.writeLog("Memcached flashAll方法报错\r\n" + exceptionWrite(e));
 			return false;
 		}
@@ -201,7 +248,8 @@ public class MemcachedUtil {
 	 * 
 	 * @author GaoHuanjie
 	 */
-	private static String exceptionWrite(Exception exception) {
+	private static String exceptionWrite(Exception exception) 
+	{
 		StringWriter stringWriter = new StringWriter();
 		PrintWriter printWriter = new PrintWriter(stringWriter);
 		exception.printStackTrace(printWriter);

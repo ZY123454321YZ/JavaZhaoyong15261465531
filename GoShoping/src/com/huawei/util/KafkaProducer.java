@@ -14,7 +14,8 @@ public class KafkaProducer
     private final Producer<String, String> producer;  
     public final static String TOPIC = "TEST-TOPIC";  
   
-    private KafkaProducer(){  
+    private KafkaProducer()
+    {  
         Properties props = new Properties();  
         //此处配置的是kafka的端口  
         props.put("metadata.broker.list", "192.168.0.103:9092");  
@@ -33,11 +34,13 @@ public class KafkaProducer
         producer = new Producer<String, String>(new ProducerConfig(props));  
     }  
   
-    void produce() {  
+    void produce() 
+    {  
         int messageNo = 1000;  
         final int COUNT = 100000;  
   
-        while (messageNo < COUNT) {  
+        while (messageNo < COUNT)
+        {  
             String key = String.valueOf(messageNo);  
             String data = "hello kafka message " + key;  
             producer.send(new KeyedMessage<String, String>(TOPIC, key ,data));  

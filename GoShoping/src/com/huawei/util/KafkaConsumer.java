@@ -14,7 +14,8 @@ public class KafkaConsumer {
   
     private final ConsumerConnector consumer;  
   
-    private KafkaConsumer() {  
+    private KafkaConsumer() 
+    {  
         Properties props = new Properties();  
         //zookeeper ≈‰÷√  
         props.put("zookeeper.connect", "192.168.0.103:2181");  
@@ -35,7 +36,8 @@ public class KafkaConsumer {
         consumer = kafka.consumer.Consumer.createJavaConsumerConnector(config);  
     }  
   
-    void consume() {  
+    void consume() 
+    {  
         Map<String, Integer> topicCountMap = new HashMap<String, Integer>();  
         topicCountMap.put(KafkaProducer.TOPIC, new Integer(1));  
   
@@ -50,7 +52,8 @@ public class KafkaConsumer {
             System.out.println(it.next().message());  
     }  
   
-    public static void main(String[] args) {  
+    public static void main(String[] args) 
+    {  
         new KafkaConsumer().consume();  
         new Thread(
         		new Runnable() {
@@ -60,9 +63,6 @@ public class KafkaConsumer {
 				
 			}
 		}).start();
-        
-        
-        
     }  
     
 }  

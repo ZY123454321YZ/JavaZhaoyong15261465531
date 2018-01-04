@@ -11,7 +11,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
 
 public class JavaMailUtil {
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception 
+	{
 		 // 创建Properties 类用于记录邮箱的一些属性
         final Properties props = new Properties();
         // 表示SMTP发送邮件，必须进行身份验证
