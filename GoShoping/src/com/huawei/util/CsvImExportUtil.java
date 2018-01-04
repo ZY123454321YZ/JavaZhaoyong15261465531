@@ -96,11 +96,4 @@ public class CsvImExportUtil {
    
         return dataList;  
     }  
-    public static void main(String[] args) {
-		File f=new File("C:\\a.csv");
-		List<String>list= CsvImExportUtil.importCsv(f);
-		   
-		
-		
-	}
 }  
