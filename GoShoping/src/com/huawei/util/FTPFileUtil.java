@@ -43,7 +43,7 @@ public class FTPFileUtil {
 			client.changeWorkingDirectory("/home/root123/");
 			client.makeDirectory("zhaoyong");
 			client.changeWorkingDirectory("/home/root123/zhaoyong");
-			client.setBufferSize(1024 * 12);
+			client.setBufferSize(1024 * 1024 * 1024);
 			client.setControlEncoding("GBK");
 			// 设置文件类型（二进制）
 			client.setFileType(FTPClient.BINARY_FILE_TYPE);
@@ -95,6 +95,10 @@ public class FTPFileUtil {
 			return false;
 		}
 		return true;
+	}
+	public static void main(String[] args) {
+		File f = new File("E:\\distribution-karaf-0.3.0-Lithium.zip");
+		fileUpLoad(f,"root123","123456");
 	}
 	
 }
