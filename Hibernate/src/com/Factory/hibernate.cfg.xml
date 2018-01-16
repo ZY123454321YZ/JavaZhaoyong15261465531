@@ -11,9 +11,7 @@
 <property name="password">>123456</property>
 <property name="driver">com.mysql.jdbc.Driver</property>
 <property name="current_session_context_class">thread</property>
-
 <!--指定puser类为实体类  -->
 <mapping  class="com.entity.puser"/>
 </session-factory>
 </hibernate-configuration>
-

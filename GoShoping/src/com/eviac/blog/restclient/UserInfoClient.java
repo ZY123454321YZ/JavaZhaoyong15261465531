@@ -45,7 +45,8 @@ public class UserInfoClient {
 	 * @param service
 	 * @return
 	 */
-	private static String getClientResponse(WebResource resource) {
+	private static String getClientResponse(WebResource resource)
+	{
 		return resource.accept(MediaType.TEXT_XML).get(ClientResponse.class).toString();
 	}
 
@@ -55,7 +56,8 @@ public class UserInfoClient {
 	 * @param service
 	 * @return
 	 */
-	private static String getResponse(WebResource resource) {
+	private static String getResponse(WebResource resource) 
+	{
 		return resource.accept(MediaType.TEXT_XML).get(String.class);
 	}
 }

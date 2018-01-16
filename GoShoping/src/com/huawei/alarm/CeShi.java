@@ -16,7 +16,8 @@ import java.io.Writer;
 import java.util.Scanner;
 
 public class CeShi {
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception
+	{
 		File f = new File("D:\\ceshi.properties");
 		if(!f.exists())
 		{

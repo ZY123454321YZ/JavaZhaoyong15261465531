@@ -34,16 +34,20 @@ public class ClientParseXML extends JFrame {
 	private final Object object = new Object();
 	private static ExecutorService ThreadPool = Executors.newCachedThreadPool();
 
-	public ClientParseXML getInstance() {
-		synchronized (object) {
-			if (cpx == null) {
+	public ClientParseXML getInstance()
+	{
+		synchronized (object) 
+		{
+			if (cpx == null)
+			{
 				return new ClientParseXML();
 			}
 			return cpx;
 		}
 	}
 
-	public ClientParseXML() {
+	public ClientParseXML()
+	{
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 501, 184);
@@ -148,7 +152,8 @@ public class ClientParseXML extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		ClientParseXML frame = new ClientParseXML();
 		frame.setVisible(true);
 	}
@@ -158,7 +163,8 @@ public class ClientParseXML extends JFrame {
 	 *
 	 * @param e
 	 */
-	protected void do_button_actionPerformed(ActionEvent e) {
+	protected void do_button_actionPerformed(ActionEvent e)
+	{
 		JFileChooser chooser = new JFileChooser();// 创建文件选择器
 		// // 设置文件扩展名过滤器
 		chooser.setFileFilter(new FileNameExtensionFilter("txt", "sql"));
@@ -187,7 +193,8 @@ public class ClientParseXML extends JFrame {
 	 * @throws InterruptedException
 	 */
 
-	protected void do_replaceButton_actionPerformed(ActionEvent event) throws Exception {
+	protected void do_replaceButton_actionPerformed(ActionEvent event) throws Exception
+	{
 		String baseDIR = file.getAbsolutePath();
 		// "F:\\tihuan";
 		String fileName = "*.sql";
@@ -195,7 +202,8 @@ public class ClientParseXML extends JFrame {
 		String char2 = replaceTextField.getText().trim();
 		List resultList = new ArrayList();
 		FileSearcher.findFiles(baseDIR, fileName, resultList, char1, char2);
-		if (resultList.size() == 0) {
+		if (resultList.size() == 0)
+		{
 			System.out.println("No File Fount.");
 		}
 	}

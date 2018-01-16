@@ -1,5 +1,4 @@
 package com.huawei.util;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,10 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
-
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
-
 public class FTPFileUtil {
 	private static FTPClient client = new FTPClient();
 	private static FileInputStream inputStream = null;
@@ -38,7 +35,6 @@ public class FTPFileUtil {
 				System.out.println("FTP 连接成功 " + "连接成功回复码：" + client.getReplyCode());
 			}
 			inputStream = new FileInputStream(f);
-		
 			// 设置上传目录  
 			client.changeWorkingDirectory("/home/root123/");
 			client.makeDirectory("zhaoyong");
@@ -51,19 +47,23 @@ public class FTPFileUtil {
 			client.storeFile("test.sql",inputStream);
 			inputStream.close();
 			client.logout();
-		} catch (SocketException e) {
+		} 
+		catch (SocketException e) 
+		{
 			e.printStackTrace();
 			return false;
-		} catch (IOException e) {
+		} 
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 			return false;
 		}
 		return true;
 	}
-	
 	public static boolean fileDownLoad(File f,String hostname,String username,String password,String pathname)
 	{   
-		try {
+		try
+		{
 			client.connect(hostname);
 			client.login(username, password);
 			
@@ -87,18 +87,20 @@ public class FTPFileUtil {
 			outputStream = new FileOutputStream(f);
 			client.retrieveFile("test.sql",outputStream);
 			outputStream.close();
-		} catch (SocketException e)
+		} 
+		catch (SocketException e)
 		{
 			return false;
-		} catch (IOException e)
+		} 
+		catch (IOException e)
 		{
 			return false;
 		}
 		return true;
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		File f = new File("E:\\distribution-karaf-0.3.0-Lithium.zip");
 		fileUpLoad(f,"root123","123456");
 	}
-	
 }

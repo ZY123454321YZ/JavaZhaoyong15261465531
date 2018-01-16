@@ -12,19 +12,23 @@ import javax.persistence.TemporalType;
 @Table(name="puser")
 public class HibernatePuser {
 
-    public String getPassword() {
+    public String getPassword() 
+    {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(String password) 
+	{
 		this.password = password;
 	}
 
-	public String getSex() {
+	public String getSex()
+	{
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	public void setSex(String sex) 
+	{
 		this.sex = sex;
 	}
 
@@ -42,35 +46,43 @@ public class HibernatePuser {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
-	public String getId() {
+	public String getId() 
+	{
 		return id;
 	}
 
-	public Date getDate() {
+	public Date getDate() 
+	{
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Date date)
+	{
 		this.date = date;
 	}
 
-	public void setId(String id) {
+	public void setId(String id) 
+	{
 		this.id = id;
 	}
 
-	public String getName() {
+	public String getName() 
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
-	public int getAge() {
+	public int getAge() 
+	{
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(int age)
+	{
 		this.age = age;
 	}
 	

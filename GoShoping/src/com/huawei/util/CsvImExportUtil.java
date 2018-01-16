@@ -1,5 +1,4 @@
 package com.huawei.util;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
-
 public class CsvImExportUtil {
 	 /* 导出 
      *  
@@ -24,13 +22,16 @@ public class CsvImExportUtil {
         FileOutputStream out=null;  
         OutputStreamWriter osw=null;  
         BufferedWriter bw=null;  
-        try {  
+        try 
+        {  
 //          OutputStreamWriter in_=new OutputStreamWriter(new FileOutputStream("文件名"), "gbk");  
             out = new FileOutputStream(file);  
             osw = new OutputStreamWriter(out, "gbk");  
             bw =new BufferedWriter(osw);  
-            if(dataList!=null && !dataList.isEmpty()){  
-                for(String data : dataList){  
+            if(dataList!=null && !dataList.isEmpty())
+            {  
+                for(String data : dataList)
+                {  
                     bw.append(data).append("\r");  
                 }  
             }  
@@ -60,7 +61,8 @@ public class CsvImExportUtil {
                 {  
                     osw.close();  
                     osw=null;  
-                } catch (IOException e)
+                } 
+                catch (IOException e)
                 {  
                     e.printStackTrace();  
                 }   
@@ -78,10 +80,8 @@ public class CsvImExportUtil {
                 }   
             }  
         }  
-          
         return isSucess;  
     }  
-      
     /** 
      * 导入 
      *  
@@ -104,6 +104,7 @@ public class CsvImExportUtil {
         }
         catch (Exception e)
         {  
+        	e.printStackTrace();
         }
         finally
         {  
@@ -120,7 +121,6 @@ public class CsvImExportUtil {
                 }  
             }  
         }  
-   
         return dataList;  
     }  
-}  
+}

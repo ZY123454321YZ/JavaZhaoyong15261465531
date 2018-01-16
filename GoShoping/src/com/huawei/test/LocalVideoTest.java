@@ -2,42 +2,37 @@ package com.huawei.test;
 
 public class LocalVideoTest {
 
-	  
+	public LocalVideoTest()
+	{
+		CamDataSource dataSource = new CamDataSource(null);
 
-	  public LocalVideoTest() {
+		dataSource.setMainSource();
 
-	         
+		dataSource.makeDataSourceCloneable();
 
-	         CamDataSource dataSource = new CamDataSource(null);
+		dataSource.startProcessing();
 
-	         dataSource.setMainSource();
+		MainFrame frame = new MainFrame(dataSource);
 
-	         dataSource.makeDataSourceCloneable();
+		frame.setSize(400, 400);
 
-	         dataSource.startProcessing();
+		frame.setLocationRelativeTo(null);
 
-	         
-
-	         MainFrame frame = new MainFrame(dataSource);
-
-	         frame.setSize(400, 400);
-
-	         frame.setLocationRelativeTo(null);
-
-	         frame.setVisible(true);
-
-	 }
-
-	  
-
-	  public static void main(String[] args) {
-		  try {
-			  LocalVideoTest Lvt = new LocalVideoTest();
-			  System.out.println("Lvt=="+Lvt);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	  }
+		frame.setVisible(true);
 
 	}
 
+	public static void main(String[] args) 
+	{
+		try
+		{
+			LocalVideoTest Lvt = new LocalVideoTest();
+			System.out.println("Lvt==" + Lvt);
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}
+
+}

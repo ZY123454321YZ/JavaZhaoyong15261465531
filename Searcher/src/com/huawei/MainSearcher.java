@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 /**
- * @author zwx472565
+ * @author zhaoyong
  * 
  */
 public class MainSearcher extends JFrame {
@@ -33,18 +33,20 @@ public class MainSearcher extends JFrame {
 	private File file;
 	private final Object object = new Object();
 	private static ExecutorService ThreadPool = Executors.newCachedThreadPool();
-
-	public MainSearcher getInstance() {
-		synchronized (object) {
-			if (cpx == null) {
+	public MainSearcher getInstance() 
+	{
+		synchronized (object)
+		{
+			if (cpx == null) 
+			{
 				return new MainSearcher();
 			}
 			return cpx;
 		}
 	}
-
-	public MainSearcher() {
-		setTitle("zwx472565");
+	public MainSearcher()
+	{
+		setTitle("zhaoyong 15261465531");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 501, 184);
@@ -52,7 +54,6 @@ public class MainSearcher extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(10, 91));
 		contentPane.add(panel, BorderLayout.CENTER);
@@ -62,7 +63,6 @@ public class MainSearcher extends JFrame {
 		gbl_panel.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
-
 		JButton button = new JButton("\u9009\u62E9\u6587\u4EF6");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -75,7 +75,6 @@ public class MainSearcher extends JFrame {
 		gbc_button.gridx = 0;
 		gbc_button.gridy = 0;
 		panel.add(button, gbc_button);
-
 		fileField = new JTextField();
 		fileField.setEditable(false);
 		GridBagConstraints gbc_fileField = new GridBagConstraints();
@@ -86,7 +85,6 @@ public class MainSearcher extends JFrame {
 		gbc_fileField.gridy = 0;
 		panel.add(fileField, gbc_fileField);
 		fileField.setColumns(10);
-
 		JLabel label = new JLabel("\u641C\u7D22\u6587\u672C\uFF1A");
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.anchor = GridBagConstraints.EAST;
@@ -94,7 +92,6 @@ public class MainSearcher extends JFrame {
 		gbc_label.gridx = 0;
 		gbc_label.gridy = 1;
 		panel.add(label, gbc_label);
-
 		searchTextField = new JTextField();
 		GridBagConstraints gbc_searchTextField = new GridBagConstraints();
 		gbc_searchTextField.gridwidth = 3;
@@ -104,7 +101,6 @@ public class MainSearcher extends JFrame {
 		gbc_searchTextField.gridy = 1;
 		panel.add(searchTextField, gbc_searchTextField);
 		searchTextField.setColumns(10);
-
 		JLabel label_1 = new JLabel("\u66FF\u6362\u4E3A\uFF1A");
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.anchor = GridBagConstraints.EAST;
@@ -112,7 +108,6 @@ public class MainSearcher extends JFrame {
 		gbc_label_1.gridx = 0;
 		gbc_label_1.gridy = 2;
 		panel.add(label_1, gbc_label_1);
-
 		replaceTextField = new JTextField();
 		GridBagConstraints gbc_replaceTextField = new GridBagConstraints();
 		gbc_replaceTextField.gridwidth = 3;
@@ -122,7 +117,6 @@ public class MainSearcher extends JFrame {
 		gbc_replaceTextField.gridy = 2;
 		panel.add(replaceTextField, gbc_replaceTextField);
 		replaceTextField.setColumns(10);
-
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.gridwidth = 4;
@@ -130,36 +124,36 @@ public class MainSearcher extends JFrame {
 		gbc_panel_1.gridx = 0;
 		gbc_panel_1.gridy = 3;
 		panel.add(panel_1, gbc_panel_1);
-
 		JButton replaceButton = new JButton("\u66FF\u6362");
 		replaceButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
+				try
+				{
 					do_replaceButton_actionPerformed(e);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
+				} 
+				catch (Exception e1) 
+				{
 					e1.printStackTrace();
 				}
 			}
 		});
 		panel_1.add(replaceButton);
-
 	}
-
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		MainSearcher frame = new MainSearcher();
 		frame.setVisible(true);
 	}
-
 	/**
 	 * 选择文件按钮事件处理方法
 	 *
 	 * @param e
 	 */
-	protected void do_button_actionPerformed(ActionEvent e) {
+	protected void do_button_actionPerformed(ActionEvent e)
+	{
 		JFileChooser chooser = new JFileChooser();// 创建文件选择器
 		// // 设置文件扩展名过滤器
 		chooser.setFileFilter(new FileNameExtensionFilter("txt", "sql"));
@@ -175,7 +169,6 @@ public class MainSearcher extends JFrame {
 		// 显示文件信息到文本框
 		fileField.setText(file.toString());
 	}
-
 	/**
 	 * 替换按钮的事件处理方法 更改文件编码格式
 	 * 
@@ -187,8 +180,8 @@ public class MainSearcher extends JFrame {
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
-
-	protected void do_replaceButton_actionPerformed(ActionEvent event) throws Exception {
+	protected void do_replaceButton_actionPerformed(ActionEvent event) throws Exception
+	{
 		String baseDIR = file.getAbsolutePath();
 		// "F:\\tihuan";
 		String fileName = "*.sql";
@@ -196,9 +189,9 @@ public class MainSearcher extends JFrame {
 		String char2 = replaceTextField.getText().trim();
 		List resultList = new ArrayList();
 		FileSearcher.findFiles(baseDIR, fileName, resultList, char1, char2);
-		if (resultList.size() == 0) {
+		if (resultList.size() == 0) 
+		{
 			System.out.println("No File Fount.");
 		}
 	}
-
 }

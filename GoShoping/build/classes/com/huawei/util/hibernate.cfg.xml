@@ -15,4 +15,3 @@
 <mapping  class="com.huawei.entity.Hibernatepuser"/>
 </session-factory>
 </hibernate-configuration>
-

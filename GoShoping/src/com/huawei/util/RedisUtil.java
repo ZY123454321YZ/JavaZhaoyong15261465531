@@ -1,14 +1,7 @@
 package com.huawei.util;
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-
 /**
  * 
  * @author zhaoyong Date 2017/10/17
@@ -37,7 +30,8 @@ public class RedisUtil {
 
 	private final Object o = new Object();
 	static {
-		try {
+		try 
+		{
 			JedisPoolConfig config = new JedisPoolConfig();
 			config.setMaxActive(MAX_ACTIVE);
 			config.setMaxIdle(MAX_IDLE);
@@ -45,38 +39,39 @@ public class RedisUtil {
 			config.setTestOnBorrow(TEST_ON_BORROW);
 			POOL = new JedisPool(config, HOST, PORT);
 			redis = getRedis();
-		} catch (Exception e) {
+		} 
+		catch (Exception e)
+		{
 			System.out.println(e.getMessage());
 		}
 	}
-
-	public static synchronized Jedis getRedis() {
-
-		if (redis == null) {
+	public static synchronized Jedis getRedis() 
+	{
+		if (redis == null)
+		{
 			redis = POOL.getResource();
 		}
 		return redis;
 	}
-
-	public void setKey(String key, String value) {
+	public void setKey(String key, String value) 
+	{
 		redis.set(key, value);
 	}
-    
 	/**
 	 * 
 	 * @param sting
 	 *            key
 	 * @return string
 	 */
-	public String getkey(String key) {
+	public String getkey(String key) 
+	{
 		return redis.get(key);
 	}
-    
-	public Object[] MGet(String...keys)
-	{   
+	public Object[] MGet(String... keys)
+	{
 		Object[] objs = new Object[keys.length];
-		for(int index = 0; index < keys.length ; index++)
-		{   
+		for (int index = 0; index < keys.length; index++) 
+		{
 			objs[index] = getkey(keys[index]);
 		}
 		return objs;
@@ -88,18 +83,17 @@ public class RedisUtil {
 	 * @param end
 	 * @return 截取字符串
 	 */
-	public String getSubString(String key, int startOffset, int endOffset) {
+	public String getSubString(String key, int startOffset, int endOffset) 
+	{
 		return redis.getrange(key, startOffset, endOffset);
 	}
-
 	/**
 	 * 
 	 * @param key
 	 * @return 用于设置指定 key 的值，并返回 key 的旧值
 	 */
-	public String getOldValue(String key, String value) {
+	public String getOldValue(String key, String value)
+	{
 		return redis.getSet(key, value);
 	}
-    
-
 }

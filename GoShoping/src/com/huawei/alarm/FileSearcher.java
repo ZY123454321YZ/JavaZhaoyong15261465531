@@ -40,15 +40,21 @@ public class FileSearcher {
 			String endStr) throws IOException, InterruptedException {
 		String tempName = null;
 		File baseDir = new File(baseDirName);
-		if (!baseDir.exists() || !baseDir.isDirectory()) {
+		if (!baseDir.exists() || !baseDir.isDirectory())
+		{
 			System.out.println("未找到文件");
-		} else {
+		}
+		else 
+		{
 			String[] filelist = baseDir.list();
-			for (int i = 0; i < filelist.length; i++) {
+			for (int i = 0; i < filelist.length; i++) 
+			{
 				File readfile = new File(baseDirName + "\\" + filelist[i]);
-				if (!readfile.isDirectory()) {
+				if (!readfile.isDirectory())
+				{
 					tempName = readfile.getName();
-					if (FileSearcher.wildcardMatch(targetFileName, tempName)) {
+					if (FileSearcher.wildcardMatch(targetFileName, tempName)) 
+					{
 						fileList.add(readfile.getAbsoluteFile());
 						File src = new File(readfile.getAbsoluteFile().toString());
 						String cont = FileSearcher.read(src);
@@ -58,7 +64,9 @@ public class FileSearcher {
 						FileSearcher.write(cont, src);
 						readfile.setLastModified(fileDate);
 					}
-				} else if (readfile.isDirectory()) {
+				} 
+				else if (readfile.isDirectory()) 
+				{
 					findFiles(baseDirName + "\\" + filelist[i], targetFileName, fileList, startStr, endStr);
 				}
 			}
@@ -69,37 +77,51 @@ public class FileSearcher {
 	public static boolean createAndDeleteFile(String filePath) throws IOException {
 		boolean result = false;
 		File file = new File(filePath);
-		if (file.exists()) {
+		if (file.exists()) 
+		{
 			file.delete();
 			result = true;
-		} else {
+		} 
+		else 
+		{
 			file.createNewFile();
 			result = true;
 		}
 		return result;
 	}
 
-	private static boolean wildcardMatch(String pattern, String str) {
+	private static boolean wildcardMatch(String pattern, String str) 
+	{
 		int patternLength = pattern.length();
 		int strLength = str.length();
 		int strIndex = 0;
 		char ch;
-		for (int patternIndex = 0; patternIndex < patternLength; patternIndex++) {
+		for (int patternIndex = 0; patternIndex < patternLength; patternIndex++) 
+		{
 			ch = pattern.charAt(patternIndex);
-			if (ch == '*') {
-				while (strIndex < strLength) {
-					if (wildcardMatch(pattern.substring(patternIndex + 1), str.substring(strIndex))) {
+			if (ch == '*') 
+			{
+				while (strIndex < strLength) 
+				{
+					if (wildcardMatch(pattern.substring(patternIndex + 1), str.substring(strIndex))) 
+					{
 						return true;
 					}
 					strIndex++;
 				}
-			} else if (ch == '?') {
+			} 
+			else if (ch == '?') 
+			{
 				strIndex++;
-				if (strIndex > strLength) {
+				if (strIndex > strLength) 
+				{
 					return false;
 				}
-			} else {
-				if ((strIndex >= strLength) || (ch != str.charAt(strIndex))) {
+			} 
+			else 
+			{
+				if ((strIndex >= strLength) || (ch != str.charAt(strIndex)))
+				{
 					return false;
 				}
 				strIndex++;
@@ -108,29 +130,38 @@ public class FileSearcher {
 		return (strIndex == strLength);
 	}
 
-	public static String read(File src) {
+	public static String read(File src) 
+	{
 		StringBuffer res = new StringBuffer();
 		String line = null;
-		try {
+		try 
+		{
 			BufferedReader reader = new BufferedReader(new FileReader(src));
 
-			while ((line = reader.readLine()) != null) {
+			while ((line = reader.readLine()) != null)
+			{
 				res.append(line + "\r\n");
 			}
 
 			reader.close();
-		} catch (FileNotFoundException e) {
+		} 
+		catch (FileNotFoundException e) 
+		{
 			e.printStackTrace();
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 		return res.toString();
 	}
 
 	// 转换文件格式
-	public static boolean write(String cont, File dist) {
+	public static boolean write(String cont, File dist) 
+	{
 		System.out.println(cont);
-		try {
+		try
+		{
 			OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(dist), "UTF-8");
 			System.out.println(dist);
 			// BufferedWriter writer = new BufferedWriter(new FileWriter(dist));
@@ -138,7 +169,9 @@ public class FileSearcher {
 			writer.flush();
 			writer.close();
 			return true;
-		} catch (IOException e) {
+		} 
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 			return false;
 		}
@@ -151,17 +184,21 @@ public class FileSearcher {
 		PrintWriter out = null;
 		BufferedReader in = null;
 		File f = new File(path);
-		if (f.exists()) {
-			try {
+		if (f.exists()) 
+		{
+			try
+			{
 
 				fs = new FileInputStream(f);
 				fw = new FileWriter(path2);
 				out = new PrintWriter(fw);
 				in = new BufferedReader(new InputStreamReader(fs, format));
 
-				while (true) {
+				while (true)
+				{
 					str = in.readLine();
-					if (str == null) {
+					if (str == null) 
+					{
 						break;
 					}
 
@@ -171,10 +208,14 @@ public class FileSearcher {
 
 				}
 
-			} catch (IOException e) {
+			} 
+			catch (IOException e) 
+			{
 
 				e.printStackTrace();
-			} finally {
+			} 
+			finally
+			{
 				in.close();
 				fs.close();
 				fw.close();
@@ -194,14 +235,16 @@ public class FileSearcher {
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
-	public static void main(String[] paramert) throws IOException, InterruptedException {
+	public static void main(String[] paramert) throws IOException, InterruptedException 
+	{
 		String baseDIR = "F:\\tihuan";
 		String fileName = "*.sql";
 		String char1 = "select";
 		String char2 = "SLECT";
 		List resultList = new ArrayList();
 		FileSearcher.findFiles(baseDIR, fileName, resultList, char1, char2);
-		if (resultList.size() == 0) {
+		if (resultList.size() == 0) 
+		{
 			System.out.println("No File Fount.");
 		}
 

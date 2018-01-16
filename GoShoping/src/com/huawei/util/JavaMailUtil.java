@@ -1,7 +1,5 @@
 package com.huawei.util;
-
 import java.util.Properties;
-
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -9,7 +7,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
-
 public class JavaMailUtil {
 	public static void main(String[] args) throws Exception 
 	{
@@ -28,7 +25,6 @@ public class JavaMailUtil {
 
         // 构建授权信息，用于进行SMTP进行身份验证
         Authenticator authenticator = new Authenticator() {
-
             protected PasswordAuthentication getPasswordAuthentication() {
                 // 用户名、密码
                 String userName = props.getProperty("mail.user");
@@ -44,19 +40,14 @@ public class JavaMailUtil {
         InternetAddress form = new InternetAddress(
                 props.getProperty("mail.user"));
         message.setFrom(form);
-
         // 设置收件人的邮箱
         InternetAddress to = new InternetAddress("834162364@qq.com");
         message.setRecipient(RecipientType.TO, to);
-
         // 设置邮件标题
         message.setSubject("测试邮件");
-
         // 设置邮件的内容体
         message.setContent("这是一封测试邮件", "text/html;charset=UTF-8");
-
         // 最后当然就是发送邮件啦
         Transport.send(message);
 	}
-
 }

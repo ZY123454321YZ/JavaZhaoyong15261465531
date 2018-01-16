@@ -1,28 +1,30 @@
 package com.entity;
-
 public class puser {
 	private Integer id;
 	private String name;
 	private String age;
-	                                          
-	public Integer getId() {
+	public Integer getId()
+	{
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Integer id) 
+	{
 		this.id = id;
 	}
-	public String getName() {
+	public String getName() 
+	{
 		return name;
 	}
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
-	public String getAge() {
+	public String getAge() 
+	{
 		return age;
 	}
-	public void setAge(String age) {
+	public void setAge(String age)
+	{
 		this.age = age;
 	}
-	
-
 }

@@ -1,18 +1,14 @@
 package com.huawei.util;
-
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
-
 	/**
 	 * @return 获取会话工厂
 	 */
@@ -35,7 +31,6 @@ public class HibernateUtil {
 		SessionFactory sessionFactory = conf.buildSessionFactory();
 		return sessionFactory;
 	}
-
 	/**
 	 * @return 获取会话对象
 	 */
@@ -43,7 +38,6 @@ public class HibernateUtil {
 	{
 		return getSessionFactory().openSession();
 	}
-
 	/**
 	 * @param obj
 	 *            添加数据
@@ -60,10 +54,8 @@ public class HibernateUtil {
 		session.save(obj);
 		tran.commit();
 		result = true;
-
 		return result;
 	}
-
 	/**
 	 * @return 更新数据 参数为修改的主键id对象
 	 */
@@ -72,7 +64,8 @@ public class HibernateUtil {
 		Session session = null;
 		Transaction tran = null;
 		boolean result = false;
-		try {
+		try 
+		{
 			session = getSession();
 			tran = session.beginTransaction();
 			session.update(object);
@@ -97,7 +90,6 @@ public class HibernateUtil {
 		}
 		return result;
 	}
-
 	/**
 	 * @param c
 	 * @param obj
@@ -127,7 +119,6 @@ public class HibernateUtil {
 		}
 		return object;
 	}
-
 	/**
 	 * @param obj
 	 * @return 删除数据
@@ -163,7 +154,6 @@ public class HibernateUtil {
 		}
 		return result;
 	}
-
 	/**
 	 * @param <T>
 	 *            查询多条记录
@@ -193,6 +183,7 @@ public class HibernateUtil {
 		} 
 		catch (Exception e)
 		{
+			e.printStackTrace();
 		} 
 		finally 
 		{
@@ -203,7 +194,6 @@ public class HibernateUtil {
 		}
 		return list;
 	}
-
 	/**
 	 * @param sql
 	 * @param param
@@ -229,6 +219,7 @@ public class HibernateUtil {
 		} 
 		catch (Exception e)
 		{
+			e.printStackTrace();
 		} 
 		finally 
 		{
@@ -239,7 +230,6 @@ public class HibernateUtil {
 		}
 		return object;
 	}
-
 	/**
 	 * @param <T>
 	 * @param sql
@@ -309,7 +299,6 @@ public class HibernateUtil {
 		}
 		return resu;
 	}
-
 	public static void main(String[] args) throws NoSuchAlgorithmException 
 	{
 		String hql = "select * from Hibernatepuser";
@@ -348,5 +337,4 @@ public class HibernateUtil {
 		// List list=queryByPage(hql,3,10);
 		// System.out.println(list.size());
 	}
-
 }

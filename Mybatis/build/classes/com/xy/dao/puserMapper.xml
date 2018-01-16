@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-
 <!-- 
 	namespace声明该文件的访问名，
 	便于session访问它。
@@ -18,21 +17,17 @@
 		resultType声明用来封装查询
 		结果的实体类型；
 	 -->
-	 
 	<select id="findById"
 		parameterType="int"
 		resultType="com.entity.puser">
 		select * from puser
 		where id=#{id}
 	</select>
-	
-	
 	<delete id="delete"
 		parameterType="int">
 		delete from puser
 		where id={#id}
 	</delete>
-	
 	 <update id="update" parameterType="java.util.HashMap">
 	           update puser set 
 	           name=#{name,jdbcType=VARCHAR},
