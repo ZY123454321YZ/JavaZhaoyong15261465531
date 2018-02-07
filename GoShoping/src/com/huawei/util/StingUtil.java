@@ -1,7 +1,12 @@
 package com.huawei.util;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Writer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -9,6 +14,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -122,27 +128,73 @@ public class StingUtil {
 		buffer.append(str);
 		return buffer.toString();
 	}
-	public static void main(String[] args) 
+	public static void main(String[] args) throws Exception
 	{
-		InputStream ins = null;
-		String[] cmd = new String[] { "cmd.exe", "/c", "F:\\apache-maven-3.2.5\\bin\\a.bat" }; // 命令
-		try
-		{
-			Process process = Runtime.getRuntime().exec(cmd);
-			ins = process.getInputStream(); // 获取执行cmd命令后的信息
-			BufferedReader reader = new BufferedReader(new InputStreamReader(ins));
-			String line = null;
-			while ((line = reader.readLine()) != null)
-			{
-				System.out.println(line); // 输出
+//		InputStream ins = null;
+//		String[] cmd = new String[] { "cmd.exe", "/c", "F:\\apache-maven-3.2.5\\bin\\a.bat" }; // 命令
+//		try
+//		{
+//			Process process = Runtime.getRuntime().exec(cmd);
+//			ins = process.getInputStream(); // 获取执行cmd命令后的信息
+//			BufferedReader reader = new BufferedReader(new InputStreamReader(ins));
+//			String line = null;
+//			while ((line = reader.readLine()) != null)
+//			{
+//				System.out.println(line); // 输出
+//			}
+//			int exitValue = process.waitFor();
+//			System.out.println("返回值：" + exitValue);
+//			process.getOutputStream().close(); // 不要忘记了一定要关
+//		} 
+//		catch (Exception e) 
+//		{
+//			e.printStackTrace();
+//		}
+		
+		
+		
+		new Thread(new Runnable() {
+			public boolean writer(String path) throws IOException
+			{   
+				File f = new File(path);
+				Writer writer = new BufferedWriter(new FileWriter(f,true));
+				Scanner scanner = new Scanner(System.in);
+				String message = scanner.nextLine();
+				try
+				{
+					if(!f.exists())
+					{
+						f.createNewFile();
+					}
+					writer.write(message);
+					scanner.reset();
+				} 
+				catch (Exception e)
+				{
+					System.err.println(e);
+					return false;
+				}
+				finally 
+				{
+					writer.flush();
+					writer.close();
+				}
+				
+				return true;
+				
 			}
-			int exitValue = process.waitFor();
-			System.out.println("返回值：" + exitValue);
-			process.getOutputStream().close(); // 不要忘记了一定要关
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
+			@Override
+			public void run() 
+			{
+				try
+				{
+					writer("D:\\sqlWriter");
+				} 
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}).start();
 	}
 }

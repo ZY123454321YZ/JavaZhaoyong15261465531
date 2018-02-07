@@ -1,6 +1,6 @@
 package com.huawei.test;
 import org.junit.Test;
-import com.huawei.entity.JDBCPuser;
+import com.huawei.entity.User;
 import com.huawei.util.JDBCUti;
 import com.huawei.util.MysqlJDBCUtilone;
 import com.huawei.util.MysqlJDBCUtiltwo;
@@ -14,12 +14,12 @@ public class TestJDBcPuser {
 		{
 			if (i % 2 == 1) 
 			{
-				JDBCUti<JDBCPuser> util = new MysqlJDBCUtilone();
+				JDBCUti<User> util = new MysqlJDBCUtilone();
 				util.insert(sql, args);
 			} 
 			else
 			{
-				JDBCUti<JDBCPuser> util2 = new MysqlJDBCUtiltwo();
+				JDBCUti<User> util2 = new MysqlJDBCUtiltwo();
 				util2.insert(sql, args);
 			}
 		}

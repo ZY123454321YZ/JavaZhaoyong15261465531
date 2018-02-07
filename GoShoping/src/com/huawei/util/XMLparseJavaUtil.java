@@ -6,7 +6,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import org.apache.log4j.Logger;
-import com.huawei.entity.JDBCPuser;
+import com.huawei.entity.User;
 public class XMLparseJavaUtil {
 	private static Logger logger = Logger.getLogger(XMLparseJavaUtil.class);
 	public static boolean parseXML(String path, Object... args) {
@@ -15,10 +15,10 @@ public class XMLparseJavaUtil {
 		JAXBContext context;
 		try 
 		{
-			context = JAXBContext.newInstance(JDBCPuser.class);
+			context = JAXBContext.newInstance(User.class);
 			// 通过上下文创建java转XML的对象Marshaller
 			Marshaller m = context.createMarshaller();
-			JDBCPuser puser = new JDBCPuser();
+			User puser = new User();
 			puser.setId((int) args[0]);
 			m.marshal(puser, f);
 		} 

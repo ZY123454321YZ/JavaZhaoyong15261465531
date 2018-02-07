@@ -49,7 +49,6 @@ public class HibernateUtil {
 		Transaction tran = null;
 		boolean result = false;
 		session = getSession();
-		System.out.println(session);
 		tran = session.beginTransaction();
 		session.save(obj);
 		tran.commit();

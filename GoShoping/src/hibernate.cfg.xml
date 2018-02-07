@@ -3,9 +3,8 @@
 	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-	         <!--  -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">123456</property> 
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
@@ -23,6 +22,6 @@
 		<!-- 动态代码库 -->
 		<!-- <mapping resource="com/huawei/demo/puser.hbm.xml" /> -->
 		<!-- <mapping resource="com/lerx/code/vo/CustomCode.hbm.xml" /> -->
-		<mapping  class="com.huawei.entity.Hibernatepuser"/>
+		<mapping  class="com.huawei.entity.User"/>
 	</session-factory>
 </hibernate-configuration>
