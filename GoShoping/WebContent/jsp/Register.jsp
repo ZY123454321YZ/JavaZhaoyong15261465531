@@ -20,16 +20,15 @@ function validate()
 	}
 }
 </script>
-<title>购物淘</title>
+<title>现金贷</title>
 </head>
 <body>
 <body>
 <div align="left" >
-<a href="https://www.baidu.com/" target="_blank">百度</a>
-<a href="https://www.baidu.com/" target="_blank">淘宝</a>
-<a href="https://www.baidu.com/" target="_blank">天猫</a>
-<a href="https://www.jd.com/" target="_blank">京东</a>
-<form action="../RequestServlet"  method="post" >
+<a href="login.jsp" target="_blank">登陆</a>
+<a href="http://localhost:8080/GoShoping/jsp/Register.jsp" target="_blank">注册</a>
+<a href="https://www.baidu.com/" target="_blank">修改密码</a>
+<form action="../Register"  method="post" >
 <span style="position:relative;font-family: 黑体;font-size: 20pt; ">用户名：</span>
 <input type="text" name = "username" style="height: 15px;position: relative;"></input><br>
 <span style="position:absolute;left:35px;top:55px;font-family: 黑体;font-size: 20pt; ">密码：</span>

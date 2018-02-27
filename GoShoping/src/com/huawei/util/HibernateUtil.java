@@ -211,14 +211,14 @@ public class HibernateUtil {
 			{
 				for (int i = 0; i < param.length; i++) 
 				{
-					query.setString(0, param[i]);
+					query.setString(i, param[i]);
 				}
 				object = query.uniqueResult();
 			}
 		} 
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			throw e;
 		} 
 		finally 
 		{

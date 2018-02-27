@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-<display-name>RESTfulWS</display-name>
+  <display-name>RESTfulWS</display-name>
   <servlet>
     <servlet-name>Jersey REST Service</servlet-name>
     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
@@ -15,8 +15,8 @@
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>RequestServlet</servlet-name>
-    <servlet-class>com.huawei.controller.RequestServlet</servlet-class>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>com.huawei.controller.Register</servlet-class>
     <init-param>
       <param-name>test</param-name>
       <param-value>test</param-value>
@@ -24,7 +24,35 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>RequestServlet</servlet-name>
-    <url-pattern>/RequestServlet/</url-pattern>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/Register</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.huawei.controller.Login</servlet-class>
+    <init-param>
+      <param-name>test</param-name>
+      <param-value>test</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>Action</servlet-name>
+    <servlet-class>com.huawei.controller.Action</servlet-class>
+    <init-param>
+      <param-name>test</param-name>
+      <param-value>test</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

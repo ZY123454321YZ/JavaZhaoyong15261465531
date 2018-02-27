@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.huawei.service.RequestService;
+import com.huawei.service.RegisterService;
 import com.huawei.util.HibernateUtil;
 
 /**
  * Servlet implementation class RequestServlet
  */
 @WebServlet("/RequestServlet")
-public class RequestServlet extends HttpServlet {
+public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RequestServlet() {
+	public Register() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -46,7 +46,11 @@ public class RequestServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try 
 		{  
-			new RequestService().doService(request, response);
+			new RegisterService().doService(request, response);
+			response.getWriter().write("登陆成功....跳转页面");
+			new Thread().sleep(2000);
+//			重定向到业务首页
+			response.sendRedirect("html/home.html");
 		} 
 		catch (Exception e)
 		{   
