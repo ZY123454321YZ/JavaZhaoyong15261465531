@@ -46,8 +46,8 @@ public class Login extends HttpServlet {
 		} 
 		catch (Exception e)
 		{   
-			  response.getWriter().write(e.getMessage());
-//			response.sendRedirect("html/error.html");
+			request.getSession().setAttribute("error", e.getMessage());
+			response.sendRedirect("jsp/error.jsp");
 		}
 		
 			

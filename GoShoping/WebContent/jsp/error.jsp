@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>管理界面</title>
+<title>error</title>
+<%
+       String errorMessage = (String)request.getSession().getAttribute("error");
+       
+%>
 </head>
 <body>
-
+<div>
+ <%= errorMessage%>
+</div>
 </body>
 </html>
