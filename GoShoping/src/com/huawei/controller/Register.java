@@ -44,20 +44,18 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try 
-		{  
-			new RegisterService().doService(request, response);
-			response.getWriter().write("登陆成功....跳转页面");
-			new Thread().sleep(2000);
-//			重定向到业务首页
-			response.sendRedirect("html/home.html");
-		} 
-		catch (Exception e)
-		{   
-			System.out.println(e);
-			response.getWriter().write("is error !");
-			
-		}
+		   try 
+      		{  
+      			new RegisterService().doService(request, response);
+//      			printWriter.write("登陆成功....跳转页面");
+      			new Thread().sleep(2000);
+//      			重定向到业务首页
+      			response.sendRedirect("html/home.html");
+      		} 
+      		catch (Exception e)
+      		{   
+//      			printWriter.write("is error !");
+      		}
 	}
 
 }

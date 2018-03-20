@@ -199,7 +199,7 @@ public class HibernateUtil {
 	 *            查询单条记录
 	 * @return
 	 */
-	public static Object queryOne(String sql, String[] param)
+	public static Object queryOne(String sql,String[]param)
 	{
 		Object object = null;
 		Session session = null;

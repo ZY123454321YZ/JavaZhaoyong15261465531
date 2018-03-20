@@ -23,5 +23,6 @@
 		<!-- <mapping resource="com/huawei/demo/puser.hbm.xml" /> -->
 		<!-- <mapping resource="com/lerx/code/vo/CustomCode.hbm.xml" /> -->
 		<mapping  class="com.huawei.entity.User"/>
+		<mapping  class="com.huawei.entity.CouponCode"/>
 	</session-factory>
 </hibernate-configuration>

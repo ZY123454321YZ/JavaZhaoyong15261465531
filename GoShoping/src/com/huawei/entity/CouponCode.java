@@ -1,5 +1,4 @@
 package com.huawei.entity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,10 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.huawei.util.HibernateUtil;
 @Entity
-@Table(name = "user")
+@Table(name = "couponcode")
 public class CouponCode 
-{
+{   
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	@Column(name = "codenumber")
+	private String codeNumber;
 	public int getId() {
 		return id;
 	}
@@ -23,10 +29,9 @@ public class CouponCode
 	public void setCodeNumber(String codeNumber) {
 		this.codeNumber = codeNumber;
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Column(name = "codenumber")
-	private String codeNumber;
+	
+	
+	
+	
 
 }

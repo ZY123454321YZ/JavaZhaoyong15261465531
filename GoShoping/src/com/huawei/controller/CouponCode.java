@@ -1,11 +1,12 @@
 package com.huawei.controller;
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.huawei.service.CouponCodeService;
 
 /**
  * Servlet implementation class CouponCode
@@ -34,8 +35,15 @@ public class CouponCode extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-		
+          CouponCodeService service = new CouponCodeService();
+          try 
+          {
+			service.doService(request, response);
+		  } 
+          catch (Exception e) 
+          {
+        	  response.sendRedirect("/GoShoping/html/error.html");
+		  }
 	}
 
 }
