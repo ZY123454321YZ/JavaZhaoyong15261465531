@@ -21,7 +21,11 @@ public class LoginService {
 		String[] message = new String[] {userName,password};
 		String sql = "from User where name = ? and password = ? ";
 		Object object = util.queryOne(sql, message);
-         return;
+		if (object == null) 
+		{
+			throw new Exception("用户名或密码错误,请重新填写！");
+		}
+        return;
 	}
 
 }

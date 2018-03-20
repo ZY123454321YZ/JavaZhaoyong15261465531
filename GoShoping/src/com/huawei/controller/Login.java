@@ -45,8 +45,9 @@ public class Login extends HttpServlet {
 			request.getRequestDispatcher("/jsp/home.jsp").forward(request, response);
 		} 
 		catch (Exception e)
-		{
-			response.sendRedirect("html/error.html");
+		{   
+			  response.getWriter().write(e.getMessage());
+//			response.sendRedirect("html/error.html");
 		}
 		
 			

@@ -41,7 +41,7 @@ public class CouponCode extends HttpServlet {
 			service.doService(request, response);
 		  } 
           catch (Exception e) 
-          {
+          {   
         	  response.sendRedirect("/GoShoping/html/error.html");
 		  }
 	}

@@ -10,13 +10,13 @@
 <div>
 <table border="1" width = "100%" height = "50">
 <tr><th><a href="http://localhost:8080/GoShoping/html/juanbao1.html">卷包</a></th>
-<th ><a href="">角色管理</a></th>
+<th ><a href="jsp/role.jsp">角色管理</a></th>
 <th ><a href="">安全保障</a></th>
 <th ><a href="">运营数据</a></th></tr>
 </table>
 </div>
 <div style="background-color: #FF4000;height: 60px">
-<p align="center" ><a href="./role.jsp"  style=": 30">备案和审计</a></p> 
+<p align="center" ><a href="jsp/role.jsp"  style=": 30">备案和审计</a></p> 
 <p align="center"><a href="">帮助中心</a></p> 
 </div>
 <div style="background-color: yellow;">
