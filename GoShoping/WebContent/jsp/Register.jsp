@@ -19,40 +19,90 @@ function validate()
 		alert("密码不能为空!");
 	}
 }
+function createDate() {
+	 var sel1 = document.getElementById ("sel1");
+     var sel2 = document.getElementById ("sel2"); 
+     var sel3 = document.getElementById ("sel3");
+	//生成1900年-2100年
+	for(var i = 1900; i<=2100;i++){
+	 var option = document.createElement('option');
+	 option.setAttribute('value',i);
+	 option.innerHTML = i;
+	 sel1.appendChild(option);
+	}
+	//生成1月-12月
+	for(var i = 1; i <=12; i++){
+	 var option = document.createElement('option');
+	 option.setAttribute('value',i);
+	 option.innerHTML = i;
+	 sel2.appendChild(option); 
+	}
+	//生成1日—31日
+	for(var i = 1; i <=31; i++){
+	 var option = document.createElement('option');
+	 option.setAttribute('value',i);
+	 option.innerHTML = i;
+	 sel3.appendChild(option); 
+	}
+	
+}
 </script>
 <title>现金贷</title>
 </head>
 <body>
-<body>
-<div align="left" >
-<a href="login.jsp" target="_blank">登陆</a>
-<a href="http://localhost:8080/GoShoping/jsp/Register.jsp" target="_blank">注册</a>
-<a href="https://www.baidu.com/" target="_blank">修改密码</a>
+<div class="header wrapfix">
+		<div class="help">
+			<a href="index.jsp" target="_blank" title="登陆">登陆</a> | <a href="###"
+				target="_blank" title="修改密码">修改密码</a> <span class="tel"
+				style="font-size: 15pt; font-family: 黑体">客服QQ:15261465531</span>
+		</div>
+</div>
+	<div class="clearfix"></div>
+<div>
 <form action="../Register"  method="post" >
-<span style="position:relative;font-family: 黑体;font-size: 20pt; ">用户名：</span>
-<input type="text" name = "username" style="height: 15px;position: relative;"></input><br>
-<span style="position:absolute;left:35px;top:55px;font-family: 黑体;font-size: 20pt; ">密码：</span>
-<input type="password" name = "password" style="height: 15px;position: absolute;left:120px;top:60px"></input><br>
-<span style="position: relative;">性别:</span><input type="radio" name="sex" value="男" style="position: relative;"></input>男
-     <input type="radio" name="sex" value="女" style="position: relative;">女<br>
-<span style="position: relative;">文件：</span><input type="file" style="position: relative;"></input><br>
-出生日期：<select name="birth" style="position: relative;">
-         <option  value="0">--请选择--</option>
-         <option  value="1986">1986</option>
-         <option  value="1987">1987</option>
-         <option  value="1988">1988</option>
-         <option  value="1989">1989</option>
-         <option  value="1990">1990</option>
-         <option  value="1991">1991</option>
-         <option  value="1992">1992</option>
-         <option  value="1993">1993</option>
-         <option  value="1994">1994</option>
-         <option  value="1995">1995</option>
-         <option  value="1996">1996</option>
-         <option  value="1997">1997</option>
-        </select>年<br>
-  <input type="submit"  value="提交" onclick="validate()">
-  <input type="reset"  value="取消"><br>
+<table width="100%" border="0" cellpadding="4" cellspacing="8">
+<tr>
+  <td width="500" align="right">用户名:</td>
+  <td height="24" colspan="2">
+  <input name="userid" type="text" class="log_input" />
+  </td>
+</tr>
+<tr>
+  <td align="right">密 码:</td>
+  <td height="24" colspan="2">
+  <input name="pwd" type="password" class="log_input2" /></td>
+</tr>
+<tr>
+  <td  align="right">性别:</td>
+  <td>
+    男
+  <input type="radio" name="sex" value="男" style="position: relative;"/>
+    女
+  <input type="radio" name="sex" value="女" style="position: relative;"/>
+</td></tr>
+<tr>
+<td    align="right">文件:</td>
+<td><input type="file" style="position: relative;"></input></td>
+</tr>
+<tr>
+<td    align="right">出生日期：</td>
+<td  onclick="createDate()">
+<select name="sel1" id="sel1" >
+ <option value="year" >年</option>
+ </select>
+ <select name="sel2" id="sel2" >
+ <option value="month">月</option>
+ </select>
+ <select name="sel3" id="sel3" >
+ <option value="day">日</option>
+ </select>
+</td>
+</tr>
+<tr>
+<td    align="right"><input type="submit"  value="提交" onclick="validate()"></td>
+<td    >    <input type="reset"  value="取消"></td>
+</tr>
+</table>
 </form>
 </div>
 </body>

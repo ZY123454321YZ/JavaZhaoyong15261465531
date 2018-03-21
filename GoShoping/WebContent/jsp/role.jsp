@@ -7,6 +7,14 @@
 <title>管理界面</title>
 </head>
 <body>
+<div>
+<table border="1">
+<tr><th></th><th>姓名</th><th>年龄</th></tr><tr></tr>
+
+
+</table>
+
+</div>
 
 </body>
 </html>
