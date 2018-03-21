@@ -52,7 +52,7 @@ function createDate() {
 <body>
 <div class="header wrapfix">
 		<div class="help">
-			<a href="index.jsp" target="_blank" title="登陆">登陆</a> | <a href="###"
+			<a href="login.jsp" target="_blank" title="登陆">登陆</a> | <a href="###"
 				target="_blank" title="修改密码">修改密码</a> <span class="tel"
 				style="font-size: 15pt; font-family: 黑体">客服QQ:15261465531</span>
 		</div>
