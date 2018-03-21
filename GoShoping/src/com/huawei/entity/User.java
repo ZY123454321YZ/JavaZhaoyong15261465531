@@ -19,6 +19,15 @@ public class User {
 	private String password;
 	@Column(name = "sex")
 	private String sex;
+	@Column(name = "date")
+	private String date;
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 
 	public int getId() {
 		return id;

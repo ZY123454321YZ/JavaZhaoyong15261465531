@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
 		{
 			new LoginService().doService(request, response);
 			new Thread().sleep(1000);
-			request.getRequestDispatcher("/jsp/home.jsp").forward(request, response);
+			request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
 		} 
 		catch (Exception e)
 		{   

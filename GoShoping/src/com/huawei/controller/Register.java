@@ -47,14 +47,14 @@ public class Register extends HttpServlet {
 		   try 
       		{  
       			new RegisterService().doService(request, response);
-//      			printWriter.write("登陆成功....跳转页面");
-      			new Thread().sleep(2000);
+      			new Thread().sleep(1000);
 //      			重定向到业务首页
-      			response.sendRedirect("html/home.html");
+      			response.sendRedirect("jsp/login.jsp");
       		} 
       		catch (Exception e)
       		{   
-//      			printWriter.write("is error !");
+      			request.getSession().setAttribute("error","注册信息错误，请重新填写！");
+    			response.sendRedirect("jsp/error.jsp");
       		}
 	}
 

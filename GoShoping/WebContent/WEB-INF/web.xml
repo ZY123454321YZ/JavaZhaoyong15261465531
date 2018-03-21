@@ -61,14 +61,22 @@
     <servlet-name>CouponCode</servlet-name>
     <url-pattern>/CouponCode.do</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>CheckTest</servlet-name>
     <servlet-class>com.huawei.servlet.CheckTest</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CheckTest</servlet-name>
     <url-pattern>/CheckTest.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>QueryUser</servlet-name>
+    <servlet-class>com.huawei.servlet.QueryUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QueryUser</servlet-name>
+    <url-pattern>/QueryUser.do</url-pattern>
   </servlet-mapping>
   <filter>
     <display-name>Filter</display-name>

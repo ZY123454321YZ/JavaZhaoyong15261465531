@@ -5,20 +5,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
-function validate() 
-{
-	var username = document.forms[0].username.value;
-	var password = document.forms[0].password.value;
+function checkSubmit() {
+	var username = document.forms[0].userid.value;
+	var password = document.forms[0].pwd.value;
 	if (username.length<=0) 
 	{
-		alert("用户名不能为空!");
+	    alert("用户名不能为空!"); 
+	    preventSubmit(event);
 	}
 	else if 
 	(password <=0) 
 	{
 		alert("密码不能为空!");
+		preventSubmit(event);
 	}
+	
 }
+function preventSubmit(event) {
+	  alert("不能提交表单!");
+	  var event = event || window.event;
+	  event.preventDefault(); // 兼容标准浏览器
+	  window.event.returnValue = false; // 兼容IE6~8
+	 };
 function createDate() {
 	 var sel1 = document.getElementById ("sel1");
      var sel2 = document.getElementById ("sel2"); 
@@ -31,14 +39,14 @@ function createDate() {
 	 sel1.appendChild(option);
 	}
 	//生成1月-12月
-	for(var i = 1; i <=12; i++){
+	for(var i = 01; i <=12; i++){
 	 var option = document.createElement('option');
 	 option.setAttribute('value',i);
 	 option.innerHTML = i;
 	 sel2.appendChild(option); 
 	}
 	//生成1日—31日
-	for(var i = 1; i <=31; i++){
+	for(var i = 01; i <=31; i++){
 	 var option = document.createElement('option');
 	 option.setAttribute('value',i);
 	 option.innerHTML = i;
@@ -59,7 +67,7 @@ function createDate() {
 </div>
 	<div class="clearfix"></div>
 <div>
-<form action="../Register"  method="post" >
+<form action="../Register.do"  method="post"  id = "submit">
 <table width="100%" border="0" cellpadding="4" cellspacing="8">
 <tr>
   <td width="500" align="right">用户名:</td>
@@ -99,8 +107,12 @@ function createDate() {
 </td>
 </tr>
 <tr>
-<td    align="right"><input type="submit"  value="提交" onclick="validate()"></td>
-<td    >    <input type="reset"  value="取消"></td>
+<td    align="right">
+<button type="submit" value="Submit" id="submit" onclick="return checkSubmit();">提交</button>
+</td>
+<td >  
+<button type="reset" value="取消" id="reset" onclick="return preventSubmit();">取消</button>
+</td>
 </tr>
 </table>
 </form>
