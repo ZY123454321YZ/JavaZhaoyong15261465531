@@ -10,9 +10,9 @@
 <div>
 <table border="1" width = "100%" height = "50">
 <tr><th><a href="http://localhost:8080/GoShoping/html/juanbao1.html">卷包</a></th>
-<th ><a href="jsp/role.jsp">角色管理</a></th>
+<th ><a href="role.jsp">角色管理</a></th>
 <th ><a href="">安全保障</a></th>
-<th ><a href="">运营数据</a></th></tr>
+<th ><a href="Operationaldata.jsp">运营数据</a></th></tr>
 </table>
 </div>
 <div style="background-color: #FF4000;height: 60px">

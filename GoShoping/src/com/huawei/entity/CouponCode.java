@@ -9,6 +9,12 @@ import javax.persistence.Table;
 import com.huawei.util.HibernateUtil;
 @Entity
 @Table(name = "couponcode")
+/**
+ * 
+ * @author ZhaoYong
+ * ³é½±±í
+ *
+ */
 public class CouponCode 
 {   
 	

@@ -69,7 +69,6 @@
     <servlet-name>CheckTest</servlet-name>
     <url-pattern>/CheckTest.do</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>QueryUser</servlet-name>
     <servlet-class>com.huawei.servlet.QueryUser</servlet-class>
@@ -77,6 +76,22 @@
   <servlet-mapping>
     <servlet-name>QueryUser</servlet-name>
     <url-pattern>/QueryUser.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>OperationData</servlet-name>
+    <servlet-class>com.huawei.servlet.OperationData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OperationData</servlet-name>
+    <url-pattern>/OperationData.do</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>ExportData</servlet-name>
+    <servlet-class>com.huawei.servlet.ExportData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExportData</servlet-name>
+    <url-pattern>/ExportData.do</url-pattern>
   </servlet-mapping>
   <filter>
     <display-name>Filter</display-name>

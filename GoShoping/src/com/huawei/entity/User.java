@@ -9,6 +9,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
+/**
+ * 
+ * @author ZhaoYong
+ * ”√ªß±Ì
+ *
+ */
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -24,5 +24,6 @@
 		<!-- <mapping resource="com/lerx/code/vo/CustomCode.hbm.xml" /> -->
 		<mapping  class="com.huawei.entity.User"/>
 		<mapping  class="com.huawei.entity.CouponCode"/>
+		<mapping  class="com.huawei.entity.OperationData"/>
 	</session-factory>
 </hibernate-configuration>

@@ -44,6 +44,7 @@ public class QueryUser extends HttpServlet {
 		Writer out = response.getWriter();
 		QueryUserService service = new QueryUserService();
 		List<User>list = service.getUser();
+		System.out.println(list.size());
 		//list Èû½ø jsonÖÐ·µ»Øjsp
 		 JSONArray jsonArray = JSONArray.fromObject(list);
 		 out.write(jsonArray.toString());
