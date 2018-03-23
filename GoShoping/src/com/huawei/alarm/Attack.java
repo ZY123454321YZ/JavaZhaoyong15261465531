@@ -1,12 +1,10 @@
 package com.huawei.alarm;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
-
 public class Attack implements Runnable {
 	private static String strUrl = null;
 	private static long numL = 0;

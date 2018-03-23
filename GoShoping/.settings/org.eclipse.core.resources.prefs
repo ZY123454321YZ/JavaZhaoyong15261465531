@@ -1,5 +1,8 @@
 eclipse.preferences.version=1
+encoding//WebContent/jsp/help.jsp=UTF-8
 encoding//WebContent/jsp/login.jsp=UTF-8
 encoding//WebContent/jsp/regst.jsp=UTF-8
 encoding//WebContent/jsp/role.jsp=UTF-8
+encoding//src/com/huawei/util/JMSConsumer.java=UTF-8
+encoding//src/com/huawei/util/JMSProducer.java=UTF-8
 encoding//src/com/huawei/util/RTPServer.java=UTF-8

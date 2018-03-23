@@ -85,13 +85,21 @@
     <servlet-name>OperationData</servlet-name>
     <url-pattern>/OperationData.do</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>ExportData</servlet-name>
     <servlet-class>com.huawei.servlet.ExportData</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ExportData</servlet-name>
     <url-pattern>/ExportData.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Help</servlet-name>
+    <servlet-class>com.huawei.servlet.Help</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Help</servlet-name>
+    <url-pattern>/Help.do</url-pattern>
   </servlet-mapping>
   <filter>
     <display-name>Filter</display-name>
