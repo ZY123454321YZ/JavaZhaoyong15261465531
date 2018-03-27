@@ -90,7 +90,7 @@ public class JMSProducer {
 	}
      public static void main(String[] args) throws Exception {
 		JMSProducer producer = new JMSProducer();
-		String[]meStrings = new String[] {
+		String[]meStrings = new String[] {"生产者",
 				"不定式","测试"
 		};
 		producer.sendMessage("topic",meStrings);

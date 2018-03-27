@@ -1,6 +1,10 @@
 package com.huawei.util;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -27,12 +31,15 @@ public class JMSConsumer {
 	private static Session session;// 会话 接受或者发送消息的线程
 	private static Destination destination;// 消息的目的地
 	private static MessageConsumer messageConsumer;// 消息的消费者
-	public String receiveMessage() throws JMSException {
+	private String bufferString = "";
+	private String message = "";
+	ExecutorService service = Executors.newCachedThreadPool();
+	public String receiveMessage() throws Exception {
 		final StringBuffer buffer = new StringBuffer();
 		// 实例化连接工厂
 		connectionFactory = new ActiveMQConnectionFactory(JMSConsumer.USERNAME, JMSConsumer.PASSWORD,
 				JMSConsumer.BROKEURL);
-		try {
+	
 			// 通过连接工厂获取连接
 			connection = connectionFactory.createConnection();
 			// 启动连接
@@ -59,37 +66,31 @@ public class JMSConsumer {
 //					break;
 //				}
 //			}
-			messageConsumer.setMessageListener(new MessageListener() {
-				
+			Future<String> result = service.submit(new Callable<String>() {
 				@Override
-				public void onMessage(Message arg0) {
-					try 
-					{
-						String message = ((TextMessage)arg0).getText();
-						buffer.append(message);
-					} 
-					catch (JMSException e)
-					{
-					}
+				public String call() throws Exception {
+					messageConsumer.setMessageListener(new MessageListener() {
+						@Override
+						public void onMessage(Message arg0) {
+							try {
+								message = ((TextMessage)arg0).getText();
+								buffer.append(message);	
+							} 
+							catch (JMSException e) 
+							{
+								e.printStackTrace();
+							}
+						}
+					});
+					return message;
 				}
 			});
-			return buffer.toString();
-		} 
-		catch (JMSException e) 
-		{  
-			throw e;
-		}
-		finally
-		{
-//			if (connection != null) 
-//			{   
-//				connection.close();
-//			}
-		}
+		  return result.get();
 	}
-	public static void main(String[] args) throws JMSException {
+	public static void main(String[] args) throws Exception {
 		JMSConsumer consumer = new JMSConsumer();
-		System.out.println(consumer.receiveMessage());
+		String message = consumer.receiveMessage();
+		System.out.println(message);
 		
 	}
 	
