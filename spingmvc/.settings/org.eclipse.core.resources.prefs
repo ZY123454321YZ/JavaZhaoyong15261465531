@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/com/springmvc/util/CsvImExportUtil.java=UTF-8
+encoding//src/com/springmvc/util/FTPFileUtil.java=gbk
+encoding//src/com/springmvc/util/HibernateUtil.java=gbk
 encoding/<project>=UTF-8

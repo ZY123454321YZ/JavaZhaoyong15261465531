@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-    xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-    xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
   http://www.springframework.org/schema/beans/spring-beans.xsd  
   http://www.springframework.org/schema/aop   
   http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
@@ -14,4 +14,46 @@
   http://www.springframework.org/schema/util   
   http://www.springframework.org/schema/util/spring-util-4.0.xsd
   ">
+	<!-- 扫包 -->
+	<context:component-scan base-package="com.springmvc.*">
+	</context:component-scan>
+	<!--1.配置数据源c3p0 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="user" value="root" />
+		<property name="password" value="123456" />
+		<property name="jdbcUrl"
+			value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8" />
+	</bean>
+	<!--2.SessionFactory 类：Local -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<!--hibernate.xxxxxx必须以hibernate -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect"> org.hibernate.dialect.Oracle10gDialect</prop>
+				<!--with current thread bind session -->
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext
+				</prop>
+			</props>
+		</property>
+		<!-- hibernate采用注解的形式 配置 -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.hpe.bean</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 5.事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!--6.事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
 </beans>

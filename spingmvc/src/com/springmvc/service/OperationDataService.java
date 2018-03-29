@@ -1,9 +1,7 @@
 package com.springmvc.service;
-
 import java.util.List;
-
-import com.huawei.entity.OperationData;
-import com.huawei.util.HibernateUtil;
+import com.springmvc.entity.OperationData;
+import com.springmvc.util.HibernateUtil;
 
 public class OperationDataService 
 {

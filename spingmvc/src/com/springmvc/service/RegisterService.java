@@ -1,12 +1,9 @@
 package com.springmvc.service;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.huawei.entity.User;
-import com.huawei.util.HibernateUtil;
+import com.springmvc.entity.User;
+import com.springmvc.util.HibernateUtil;
 public class RegisterService {
 	public void doService(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PrintWriter writer = response.getWriter();

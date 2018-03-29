@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springmvc.service.LoginService;
 import com.sun.glass.ui.Application;
 @Controller
 public class ViewController {
     @RequestMapping(value = "/view")
-    public ModelAndView view(HttpServletRequest request){
+    public ModelAndView view(HttpServletRequest request) throws Exception{
         ModelAndView mav = new ModelAndView();
         mav.setViewName("login");
         return mav;

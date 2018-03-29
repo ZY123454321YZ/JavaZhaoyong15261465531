@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.DeliveryMode;

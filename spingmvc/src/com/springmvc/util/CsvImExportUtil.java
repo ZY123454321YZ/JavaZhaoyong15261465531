@@ -9,10 +9,10 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 public class CsvImExportUtil {
-	 /* µ¼³ö 
+	 /* å¯¼å‡º 
      *  
-     * @param file csvÎÄ¼ş(Â·¾¶+ÎÄ¼şÃû)£¬csvÎÄ¼ş²»´æÔÚ»á×Ô¶¯´´½¨ 
-     * @param dataList Êı¾İ 
+     * @param file csvæ–‡ä»¶(è·¯å¾„+æ–‡ä»¶å)ï¼Œcsvæ–‡ä»¶ä¸å­˜åœ¨ä¼šè‡ªåŠ¨åˆ›å»º 
+     * @param dataList æ•°æ® 
      * @return 
      */  
     public static boolean exportCsv(File file, List<String> dataList)
@@ -24,7 +24,7 @@ public class CsvImExportUtil {
         BufferedWriter bw=null;  
         try 
         {  
-//          OutputStreamWriter in_=new OutputStreamWriter(new FileOutputStream("ÎÄ¼şÃû"), "gbk");  
+//          OutputStreamWriter in_=new OutputStreamWriter(new FileOutputStream("æ–‡ä»¶å"), "gbk");  
             out = new FileOutputStream(file);  
             osw = new OutputStreamWriter(out, "gbk");  
             bw =new BufferedWriter(osw);  
@@ -83,9 +83,9 @@ public class CsvImExportUtil {
         return isSucess;  
     }  
     /** 
-     * µ¼Èë 
+     * å¯¼å…¥ 
      *  
-     * @param file csvÎÄ¼ş(Â·¾¶+ÎÄ¼ş) 
+     * @param file csvæ–‡ä»¶(è·¯å¾„+æ–‡ä»¶) 
      * @return 
      */  
     public static List<String> importCsv(File file)

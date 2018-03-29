@@ -1,11 +1,7 @@
 package com.springmvc.service;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import com.huawei.entity.User;
-import com.huawei.util.HibernateUtil;
-
+import com.springmvc.entity.User;
+import com.springmvc.util.HibernateUtil;
 public class QueryUserService 
 {
 	public List<User> getUser()

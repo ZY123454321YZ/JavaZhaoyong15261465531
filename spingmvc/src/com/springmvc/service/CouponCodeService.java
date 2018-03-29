@@ -1,8 +1,9 @@
 package com.springmvc.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.huawei.entity.CouponCode;
-import com.huawei.util.HibernateUtil;
+
+import com.springmvc.entity.CouponCode;
+import com.springmvc.util.HibernateUtil;
 public class CouponCodeService {
 	public void doService(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String sql = "from CouponCode where codenumber = ?";

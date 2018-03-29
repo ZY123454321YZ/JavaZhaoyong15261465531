@@ -74,7 +74,7 @@ function doCompare(){
 								<td width="106" height="45" valign="middle"><input
 									type="submit" value="登陆" onclick="validate()" /></td>
 								<td width="74" height="48" valign="middle"><a
-									href="regst.jsp" class="Blue">免费注册</a></td>
+									href="pages/regst.jsp" class="Blue">免费注册</a></td>
 							</tr>
 						</table>
 					</form>

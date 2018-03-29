@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">123456</property> 
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
+		<!-- 缓存配置 -->
+		<!--  
+		<property name="hibernate,cache.use_query_cache">true</property>
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		-->
+		<!-- 一次读的数据库记录数 -->
+		<property name="jdbc.fetch_size">50</property>
+		<!-- 设定对数据库进行批量删除 -->
+		<property name="jdbc.batch_size">30</property> 
+		<!--  <property name="hbm2ddl.auto">create</property> -->
+		<!-- 动态代码库 -->
+		<!-- <mapping resource="com/huawei/demo/puser.hbm.xml" /> -->
+		<!-- <mapping resource="com/lerx/code/vo/CustomCode.hbm.xml" /> -->
+		<mapping  class="com.huawei.entity.User"/>
+		<mapping  class="com.huawei.entity.CouponCode"/>
+		<mapping  class="com.huawei.entity.OperationData"/>
+	</session-factory>
+</hibernate-configuration>
