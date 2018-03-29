@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,33 +13,33 @@ public class MemcachedUtil {
 	private static MemCachedClient memCachedClient;
 	static {
 		/************************************
-		 * ÅäÖÃMemcached
+		 * ï¿½ï¿½ï¿½ï¿½Memcached
 		 **************************************/
 		SockIOPool sockIOPool = SockIOPool.getInstance();
-		sockIOPool.setServers(new String[] { "127.0.0.1:11211" });// ÉèÖÃmemcached·þÎñÆ÷µØÖ·
-		sockIOPool.setWeights(new Integer[] { 3 }); // ÉèÖÃÃ¿¸öMemCached·þÎñÆ÷È¨ÖØ
-		sockIOPool.setFailover(true); // µ±Ò»¸ömemcached·þÎñÆ÷Ê§Ð§µÄÊ±ºòÊÇ·ñÈ¥Á¬½ÓÁíÒ»¸ömemcached·þÎñÆ÷.
-		sockIOPool.setInitConn(10); // ³õÊ¼»¯Ê±¶ÔÃ¿¸ö·þÎñÆ÷½¨Á¢µÄÁ¬½ÓÊýÄ¿
-		sockIOPool.setMinConn(10); // Ã¿¸ö·þÎñÆ÷½¨Á¢×îÐ¡µÄÁ¬½ÓÊý
-		sockIOPool.setMaxConn(100); // Ã¿¸ö·þÎñÆ÷½¨Á¢×î´óµÄÁ¬½ÓÊý
-		sockIOPool.setMaintSleep(30); // ×Ô²éÏß³ÌÖÜÆÚ½øÐÐ¹¤×÷£¬ÆäÃ¿´ÎÐÝÃßÊ±¼ä
-		sockIOPool.setNagle(false); // SocketµÄ²ÎÊý£¬Èç¹ûÊÇtrueÔÚÐ´Êý¾ÝÊ±²»»º³å£¬Á¢¼´·¢ËÍ³öÈ¥¡£TcpµÄ¹æÔòÊÇÔÚ·¢ËÍÒ»¸ö°üÖ®Ç°£¬°üµÄ·¢ËÍ·½»áµÈ´ýÔ¶³Ì½ÓÊÕ·½È·ÈÏÒÑÊÕµ½ÉÏÒ»´Î·¢ËÍ¹ýÀ´µÄ°ü£»Õâ¸ö·½·¨¾Í¿ÉÒÔ¹Ø±ÕÌ×½Ó×ÖµÄ»º´æ¡ª¡ª°ü×¼±¸Á¢¼´·¢³ö¡£
-		sockIOPool.setSocketTO(3000); // Socket×èÈû¶ÁÈ¡Êý¾ÝµÄ³¬Ê±Ê±¼ä
-		sockIOPool.setAliveCheck(true); // ÉèÖÃÊÇ·ñ¼ì²émemcached·þÎñÆ÷ÊÇ·ñÊ§Ð§
-		sockIOPool.setMaxIdle(1000 * 30 * 30); // ÉèÖÃ×î´ó´¦ÀíÊ±¼ä
-		sockIOPool.setSocketConnectTO(0); // Á¬½Ó½¨Á¢Ê±¶Ô³¬Ê±µÄ¿ØÖÆ
-		sockIOPool.initialize(); // ³õÊ¼»¯Á¬½Ó³Ø
+		sockIOPool.setServers(new String[] { "127.0.0.1:11211" });// ï¿½ï¿½ï¿½ï¿½memcachedï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
+		sockIOPool.setWeights(new Integer[] { 3 }); // ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½MemCachedï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½
+		sockIOPool.setFailover(true); // ï¿½ï¿½Ò»ï¿½ï¿½memcachedï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§Ð§ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ç·ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½memcachedï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		sockIOPool.setInitConn(10); // ï¿½ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿
+		sockIOPool.setMinConn(10); // Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		sockIOPool.setMaxConn(100); // Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		sockIOPool.setMaintSleep(30); // ï¿½Ô²ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+		sockIOPool.setNagle(false); // Socketï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½trueï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½å£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½È¥ï¿½ï¿½Tcpï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½Í·ï¿½ï¿½ï¿½È´ï¿½Ô¶ï¿½Ì½ï¿½ï¿½Õ·ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ò»ï¿½Î·ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½Ô¹Ø±ï¿½ï¿½×½ï¿½ï¿½ÖµÄ»ï¿½ï¿½æ¡ªï¿½ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		sockIOPool.setSocketTO(3000); // Socketï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ÝµÄ³ï¿½Ê±Ê±ï¿½ï¿½
+		sockIOPool.setAliveCheck(true); // ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½memcachedï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Ê§Ð§
+		sockIOPool.setMaxIdle(1000 * 30 * 30); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+		sockIOPool.setSocketConnectTO(0); // ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½Ê±ï¿½Ô³ï¿½Ê±ï¿½Ä¿ï¿½ï¿½ï¿½
+		sockIOPool.initialize(); // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½
 		if (memCachedClient == null) 
 		{
 			memCachedClient = new MemCachedClient();
-			memCachedClient.setPrimitiveAsString(true); // ÊÇ·ñ½«»ù±¾ÀàÐÍ×ª»»ÎªString·½·¨
+			memCachedClient.setPrimitiveAsString(true); // ï¿½Ç·ñ½«»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ÎªStringï¿½ï¿½ï¿½ï¿½
 		}
 	}
 	private MemcachedUtil()
 	{
 	}
 	/**
-	 * Ïò»º´æÌí¼Ó¼üÖµ¶Ô¡£×¢Òâ£ºÈç¹û¼üÒÑ¾­´æÔÚ£¬ÔòÖ®Ç°µÄ¼ü¶ÔÓ¦µÄÖµ½«±»Ìæ»»¡£
+	 * ï¿½ò»º´ï¿½ï¿½ï¿½Ó¼ï¿½Öµï¿½Ô¡ï¿½×¢ï¿½â£ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½Ö®Ç°ï¿½Ä¼ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½æ»»ï¿½ï¿½
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -51,13 +51,13 @@ public class MemcachedUtil {
 		} 
 		catch (Exception e) 
 		{
-			MemcachedLogUtils.writeLog("Memcached set·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n" + exceptionWrite(e));
+			MemcachedLogUtils.writeLog("Memcached setï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
 	}
 	/**
-	 * Ïò»º´æÌí¼Ó¼üÖµ¶Ô²¢Îª¸Ã¼üÖµ¶ÔÉè¶¨ÓâÆÚÊ±¼ä£¨¼´¶à³¤Ê±¼äºó¸Ã¼üÖµ¶Ô´ÓMemcachedÄÚ´æ»º´æÖÐÉ¾³ý£¬±ÈÈç£º new
-	 * Date(1000*10)£¬Ôò±íÊ¾Ê®ÃëÖ®ºó´ÓMemcachedÄÚ´æ»º´æÖÐÉ¾³ý£©¡£×¢Òâ£ºÈç¹û¼üÒÑ¾­´æÔÚ£¬ÔòÖ®Ç°µÄ¼ü¶ÔÓ¦µÄÖµ½«±»Ìæ»»¡£
+	 * ï¿½ò»º´ï¿½ï¿½ï¿½Ó¼ï¿½Öµï¿½Ô²ï¿½Îªï¿½Ã¼ï¿½Öµï¿½ï¿½ï¿½è¶¨ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¨ï¿½ï¿½ï¿½à³¤Ê±ï¿½ï¿½ï¿½Ã¼ï¿½Öµï¿½Ô´ï¿½Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç£º new
+	 * Date(1000*10)ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ê®ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½â£ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½Ö®Ç°ï¿½Ä¼ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½æ»»ï¿½ï¿½
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -69,12 +69,12 @@ public class MemcachedUtil {
 		} 
 		catch (Exception e)
 		{
-			MemcachedLogUtils.writeLog("Memcached set·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n" + exceptionWrite(e));
+			MemcachedLogUtils.writeLog("Memcached setï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
 	}
 	/**
-	 * Ïò»º´æÌí¼Ó¼üÖµ¶Ô¡£×¢Òâ£º½öµ±»º´æÖÐ²»´æÔÚ¼üÊ±£¬²Å»áÌí¼Ó³É¹¦¡£
+	 * ï¿½ò»º´ï¿½ï¿½ï¿½Ó¼ï¿½Öµï¿½Ô¡ï¿½×¢ï¿½â£ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½Ê±ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -84,8 +84,8 @@ public class MemcachedUtil {
 		{
 			if (get(key) != null) 
 			{
-				MemcachedLogUtils.writeLog("Memcached add·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n"
-						+ exceptionWrite(new Exception("MemcachedÄÚ´æ»º´æÖÐÒÑ¾­´æÔÚ¸Ã¼üÖµ¶Ô")));
+				MemcachedLogUtils.writeLog("Memcached addï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n"
+						+ exceptionWrite(new Exception("Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú¸Ã¼ï¿½Öµï¿½ï¿½")));
 				return false;
 			} 
 			else
@@ -95,13 +95,13 @@ public class MemcachedUtil {
 		} 
 		catch (Exception e)
 		{
-			MemcachedLogUtils.writeLog("Memcached add·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n" + exceptionWrite(e));
+			MemcachedLogUtils.writeLog("Memcached addï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
 	}
 	/**
-	 * Ïò»º´æÌí¼Ó¼üÖµ¶Ô²¢Îª¸Ã¼üÖµ¶ÔÉè¶¨ÓâÆÚÊ±¼ä£¨¼´¶à³¤Ê±¼äºó¸Ã¼üÖµ¶Ô´ÓMemcachedÄÚ´æ»º´æÖÐÉ¾³ý£¬±ÈÈç£º new
-	 * Date(1000*10)£¬Ôò±íÊ¾Ê®ÃëÖ®ºó´ÓMemcachedÄÚ´æ»º´æÖÐÉ¾³ý£©¡£×¢Òâ£º½öµ±»º´æÖÐ²»´æÔÚ¼üÊ±£¬²Å»áÌí¼Ó³É¹¦¡£
+	 * ï¿½ò»º´ï¿½ï¿½ï¿½Ó¼ï¿½Öµï¿½Ô²ï¿½Îªï¿½Ã¼ï¿½Öµï¿½ï¿½ï¿½è¶¨ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¨ï¿½ï¿½ï¿½à³¤Ê±ï¿½ï¿½ï¿½Ã¼ï¿½Öµï¿½Ô´ï¿½Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç£º new
+	 * Date(1000*10)ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ê®ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½â£ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½Ê±ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -111,8 +111,8 @@ public class MemcachedUtil {
 		{
 			if (get(key) != null) 
 			{
-				MemcachedLogUtils.writeLog("Memcached add·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n"
-						+ exceptionWrite(new Exception("MemcachedÄÚ´æ»º´æÖÐÒÑ¾­´æÔÚ¸Ã¼üÖµ¶Ô")));
+				MemcachedLogUtils.writeLog("Memcached addï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n"
+						+ exceptionWrite(new Exception("Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú¸Ã¼ï¿½Öµï¿½ï¿½")));
 				return false;
 			} 
 			else 
@@ -122,12 +122,12 @@ public class MemcachedUtil {
 		} 
 		catch (Exception e) 
 		{
-			MemcachedLogUtils.writeLog("Memcached add·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n" + exceptionWrite(e));
+			MemcachedLogUtils.writeLog("Memcached addï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
 	}
 	/**
-	 * ¸ù¾Ý¼üÀ´Ìæ»»MemcachedÄÚ´æ»º´æÖÐÒÑÓÐµÄ¶ÔÓ¦µÄÖµ¡£×¢Òâ£ºÖ»ÓÐ¸Ã¼ü´æÔÚÊ±£¬²Å»áÌæ»»¼üÏàÓ¦µÄÖµ¡£
+	 * ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½ï¿½æ»»Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ¶ï¿½Ó¦ï¿½ï¿½Öµï¿½ï¿½×¢ï¿½â£ºÖ»ï¿½Ð¸Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Å»ï¿½ï¿½æ»»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Öµï¿½ï¿½
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -139,13 +139,13 @@ public class MemcachedUtil {
 		} 
 		catch (Exception e)
 		{
-			MemcachedLogUtils.writeLog("Memcached replace·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n" + exceptionWrite(e));
+			MemcachedLogUtils.writeLog("Memcached replaceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
 	}
 	/**
-	 * ¸ù¾Ý¼üÀ´Ìæ»»MemcachedÄÚ´æ»º´æÖÐÒÑÓÐµÄ¶ÔÓ¦µÄÖµ²¢ÉèÖÃÓâÆÚÊ±¼ä£¨¼´¶à³¤Ê±¼äºó¸Ã¼üÖµ¶Ô´ÓMemcachedÄÚ´æ»º´æÖÐÉ¾³ý£¬±ÈÈç£º new
-	 * Date(1000*10)£¬Ôò±íÊ¾Ê®ÃëÖ®ºó´ÓMemcachedÄÚ´æ»º´æÖÐÉ¾³ý£©¡£×¢Òâ£ºÖ»ÓÐ¸Ã¼ü´æÔÚÊ±£¬²Å»áÌæ»»¼üÏàÓ¦µÄÖµ¡£
+	 * ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½ï¿½æ»»Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ¶ï¿½Ó¦ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¨ï¿½ï¿½ï¿½à³¤Ê±ï¿½ï¿½ï¿½Ã¼ï¿½Öµï¿½Ô´ï¿½Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç£º new
+	 * Date(1000*10)ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ê®ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½â£ºÖ»ï¿½Ð¸Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Å»ï¿½ï¿½æ»»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Öµï¿½ï¿½
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -157,12 +157,12 @@ public class MemcachedUtil {
 		} 
 		catch (Exception e)
 		{
-			MemcachedLogUtils.writeLog("Memcached replace·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n" + exceptionWrite(e));
+			MemcachedLogUtils.writeLog("Memcached replaceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
 	}
 	/**
-	 * ¸ù¾Ý¼ü»ñÈ¡MemcachedÄÚ´æ»º´æ¹ÜÀíÏµÍ³ÖÐÏàÓ¦µÄÖµ
+	 * ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½È¡Memcachedï¿½Ú´æ»ºï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Öµ
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -174,12 +174,12 @@ public class MemcachedUtil {
 		} 
 		catch (Exception e)
 		{
-			MemcachedLogUtils.writeLog("Memcached get·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n" + exceptionWrite(e));
+			MemcachedLogUtils.writeLog("Memcached getï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n" + exceptionWrite(e));
 			return null;
 		}
 	}
 	/**
-	 * ¸ù¾Ý¼üÉ¾³ýmemcachedÖÐµÄ¼ü/Öµ¶Ô
+	 * ï¿½ï¿½ï¿½Ý¼ï¿½É¾ï¿½ï¿½memcachedï¿½ÐµÄ¼ï¿½/Öµï¿½ï¿½
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -191,12 +191,12 @@ public class MemcachedUtil {
 		} 
 		catch (Exception e)
 		{
-			MemcachedLogUtils.writeLog("Memcached delete·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n" + exceptionWrite(e));
+			MemcachedLogUtils.writeLog("Memcached deleteï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
 	}
 	/**
-	 * ¸ù¾Ý¼üºÍÓâÆÚÊ±¼ä£¨ÀýÈç£ºnew Date(1000*10)£ºÊ®Ãëºó¹ýÆÚ£©É¾³ý memcachedÖÐµÄ¼ü/Öµ¶Ô
+	 * ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¨ï¿½ï¿½ï¿½ç£ºnew Date(1000*10)ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½É¾ï¿½ï¿½ memcachedï¿½ÐµÄ¼ï¿½/Öµï¿½ï¿½
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -208,12 +208,12 @@ public class MemcachedUtil {
 		} 
 		catch (Exception e) 
 		{
-			MemcachedLogUtils.writeLog("Memcached delete·½·¨±¨´í£¬keyÖµ£º" + key + "\r\n" + exceptionWrite(e));
+			MemcachedLogUtils.writeLog("Memcached deleteï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½" + key + "\r\n" + exceptionWrite(e));
 			return false;
 		}
 	}
 	/**
-	 * ÇåÀí»º´æÖÐµÄËùÓÐ¼ü/Öµ¶Ô
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ð¼ï¿½/Öµï¿½ï¿½
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -225,12 +225,12 @@ public class MemcachedUtil {
 		} 
 		catch (Exception e) 
 		{
-			MemcachedLogUtils.writeLog("Memcached flashAll·½·¨±¨´í\r\n" + exceptionWrite(e));
+			MemcachedLogUtils.writeLog("Memcached flashAllï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n" + exceptionWrite(e));
 			return false;
 		}
 	}
 	/**
-	 * ·µ»ØStringÀàÐÍµÄÒì³£Õ»ÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½Stringï¿½ï¿½ï¿½Íµï¿½ï¿½ì³£Õ»ï¿½ï¿½Ï¢
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -243,7 +243,7 @@ public class MemcachedUtil {
 		return stringWriter.toString();
 	}
 	/**
-	 * MemcachedÈÕÖ¾¼ÇÂ¼¹¤¾ß
+	 * Memcachedï¿½ï¿½Ö¾ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @author GaoHuanjie
 	 */
@@ -251,9 +251,9 @@ public class MemcachedUtil {
 	{
 		private static FileWriter fileWriter;
 		private static BufferedWriter logWrite;
-		private final static String PID = ManagementFactory.getRuntimeMXBean().getName();// Í¨¹ýÕÒµ½¶ÔÓ¦µÄJVM½ø³Ì»ñÈ¡PID
+		private final static String PID = ManagementFactory.getRuntimeMXBean().getName();// Í¨ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ó¦ï¿½ï¿½JVMï¿½ï¿½ï¿½Ì»ï¿½È¡PID
 		/**
-		 * ³õÊ¼»¯MemcachedÈÕÖ¾Ð´ÈëÁ÷
+		 * ï¿½ï¿½Ê¼ï¿½ï¿½Memcachedï¿½ï¿½Ö¾Ð´ï¿½ï¿½ï¿½ï¿½
 		 * 
 		 * @author GaoHuanjie
 		 */
@@ -293,7 +293,7 @@ public class MemcachedUtil {
 			}
 		}
 		/**
-		 * Ð´ÈëÈÕÖ¾ÐÅÏ¢
+		 * Ð´ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½Ï¢
 		 * 
 		 * @author GaoHuanjie
 		 */

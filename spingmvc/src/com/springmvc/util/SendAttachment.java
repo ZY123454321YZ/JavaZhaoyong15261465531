@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
@@ -14,13 +14,13 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 public class SendAttachment {
-	private String MailHost; // ÓÊ¼ş·şÎñÆ÷
-	private String UserName; // ÓÃ»§Ãû
-	private String PassWord; // ÓÃ»§ÃÜÂë
-	private MimeMessage mimeMsg; // MIMEÓÊ¼ş¶ÔÏó
-	private Session session; // ÓÊ¼ş»á»°¶ÔÏó
-	private Properties props; // ÏµÍ³ÊôĞÔ
-	private Multipart mp; // Multipart¶ÔÏó,ÓÊ¼şÄÚÈİ,±êÌâ,¸½¼şµÈÄÚÈİ¾ùÌí¼Óµ½ÆäÖĞºóÔÙÉú³ÉMimeMessage¶ÔÏó
+	private String MailHost; // ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String UserName; // ï¿½Ã»ï¿½ï¿½ï¿½
+	private String PassWord; // ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
+	private MimeMessage mimeMsg; // MIMEï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Session session; // ï¿½Ê¼ï¿½ï¿½á»°ï¿½ï¿½ï¿½ï¿½
+	private Properties props; // ÏµÍ³ï¿½ï¿½ï¿½ï¿½
+	private Multipart mp; // Multipartï¿½ï¿½ï¿½ï¿½,ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¾ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ğºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MimeMessageï¿½ï¿½ï¿½ï¿½
 	private Session mailSession;
 	public SendAttachment()
 	{
@@ -37,21 +37,21 @@ public class SendAttachment {
 	 */
 	public void setSmtpHost(String hostName) 
 	{
-		System.out.println("ÉèÖÃÏµÍ³ÊôĞÔ£ºmail.smtp.host = " + hostName);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½Ô£ï¿½mail.smtp.host = " + hostName);
 		if (props == null) 
-		{ // »ñµÃÏµÍ³ÊôĞÔ¶ÔÏó
+		{ // ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½
 			props = System.getProperties();
 		}
-		props.put("mail.smtp.host", hostName); // ÉèÖÃSMTPÖ÷»ú hostName="smtp.163.com";
+		props.put("mail.smtp.host", hostName); // ï¿½ï¿½ï¿½ï¿½SMTPï¿½ï¿½ï¿½ï¿½ hostName="smtp.163.com";
 		props.put("mail.smtp.port", "587");
-		// ´Ë´¦ÌîĞ´ÄãµÄÕËºÅ
+		// ï¿½Ë´ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½ï¿½Ëºï¿½
 		props.put("mail.user", "834162364@qq.com");
-		// ´Ë´¦µÄÃÜÂë¾ÍÊÇÇ°ÃæËµµÄ16Î»STMP¿ÚÁî
+		// ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Ëµï¿½ï¿½16Î»STMPï¿½ï¿½ï¿½ï¿½
 		props.put("mail.password", "ivyelwftblplbcij");
-		// ¹¹½¨ÊÚÈ¨ĞÅÏ¢£¬ÓÃÓÚ½øĞĞSMTP½øĞĞÉí·İÑéÖ¤
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½SMTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
 		Authenticator authenticator = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				// ÓÃ»§Ãû¡¢ÃÜÂë
+				// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				String userName = props.getProperty("mail.user");
 				String password = props.getProperty("mail.password");
 				return new PasswordAuthentication(userName, password);
@@ -63,31 +63,31 @@ public class SendAttachment {
 	{
 		try
 		{
-			System.out.println("×¼±¸»ñÈ¡ÓÊ¼ş»á»°¶ÔÏó£¡");
-			// session = Session.getDefaultInstance(props, null); //»ñµÃÓÊ¼ş»á»°¶ÔÏó
+			System.out.println("×¼ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ê¼ï¿½ï¿½á»°ï¿½ï¿½ï¿½ï¿½");
+			// session = Session.getDefaultInstance(props, null); //ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½á»°ï¿½ï¿½ï¿½ï¿½
 			session = Session.getInstance(props, null);
 		}
 		catch (Exception e)
 		{
-			System.err.println("»ñÈ¡ÓÊ¼ş»á»°¶ÔÏóÊ±·¢Éú´íÎó£¡" + e);
+			System.err.println("ï¿½ï¿½È¡ï¿½Ê¼ï¿½ï¿½á»°ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + e);
 			return false;
 		}
-		System.out.println("×¼±¸´´½¨MIMEÓÊ¼ş¶ÔÏó£¡");
+		System.out.println("×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MIMEï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½");
 		try
 		{
-			mimeMsg = new MimeMessage(session); // ´´½¨MIMEÓÊ¼ş¶ÔÏó
+			mimeMsg = new MimeMessage(session); // ï¿½ï¿½ï¿½ï¿½MIMEï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
 			mp = new MimeMultipart();
 			return true;
 		} 
 		catch (Exception e)
 		{
-			System.err.println("´´½¨MIMEÓÊ¼ş¶ÔÏóÊ§°Ü£¡" + e);
+			System.err.println("ï¿½ï¿½ï¿½ï¿½MIMEï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" + e);
 			return false;
 		}
 	}
 	public void setNeedAuth(boolean need)
 	{
-		System.out.println("ÉèÖÃsmtpÉí·İÈÏÖ¤£ºmail.smtp.auth = " + need);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½smtpï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½mail.smtp.auth = " + need);
 		if (props == null)
 		{
 			props = System.getProperties();
@@ -102,13 +102,13 @@ public class SendAttachment {
 		}
 	}
 	/**
-	 * ÉèÖÃÓÃ»§ÃûºÍÃÜÂë
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @param String
-	 *            name ÓÃ»§Ãû
+	 *            name ï¿½Ã»ï¿½ï¿½ï¿½
 	 *
 	 * @param String
-	 *            pass ÃÜÂë
+	 *            pass ï¿½ï¿½ï¿½ï¿½
 	 *
 	 */
 	public void setNamePass(String name, String pass)
@@ -117,16 +117,16 @@ public class SendAttachment {
 		PassWord = pass;
 	}
 	/**
-	 * ÉèÖÃÓÊ¼şÖ÷Ìâ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @param String
-	 *            mailsubject ÓÊ¼şÖ÷Ìâ
+	 *            mailsubject ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return boolean
 	 */
 	public boolean setSubject(String mailSubject)
 	{
-		System.out.println("ÉèÖÃÓÊ¼şÖ÷Ìâ£¡");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½â£¡");
 		try 
 		{
 			mimeMsg.setSubject(mailSubject);
@@ -134,15 +134,15 @@ public class SendAttachment {
 		} 
 		catch (Exception e)
 		{
-			System.err.println("ÉèÖÃÓÊ¼şÖ÷Ìâ·¢Éú´íÎó£¡");
+			System.err.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½â·¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			return false;
 		}
 	}
 	/**
-	 * ÓÊ¼şÖ÷Ìå
+	 * ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @param String
-	 *            mailbody ÓÊ¼şÖ÷Ìå
+	 *            mailbody ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return boolean
 	 */
@@ -158,21 +158,21 @@ public class SendAttachment {
 		} 
 		catch (Exception e)
 		{
-			System.err.println("ÉèÖÃÓÊ¼şÕıÎÄÊ±·¢Éú´íÎó£¡" + e);
+			System.err.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + e);
 			return false;
 		}
 	}
 	/**
-	 * Ìí¼Ó¸½¼ş
+	 * ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½
 	 *
 	 * @param String
-	 *            filename ÎÄ¼şÃû
+	 *            filename ï¿½Ä¼ï¿½ï¿½ï¿½
 	 * 
 	 * @return boolean
 	 */
 	public boolean addFileAffix(String filename)
 	{
-		System.out.println("Ôö¼ÓÓÊ¼ş¸½¼ş£º" + filename);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + filename);
 		try 
 		{
 			BodyPart bp = new MimeBodyPart();
@@ -184,24 +184,24 @@ public class SendAttachment {
 		} 
 		catch (Exception e) 
 		{
-			System.err.println("Ôö¼ÓÓÊ¼ş¸½¼ş£º" + filename + "·¢Éú´íÎó£¡" + e);
+			System.err.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + filename + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + e);
 			return false;
 		}
 	}
 	/**
-	 * ·¢¼şÈËÓÊÏä
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 *
 	 * @param String
-	 *            from ·¢¼şÈËÓÊÏä
+	 *            from ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return boolean
 	 */
 	public boolean setFrom(String from)
 	{
-		System.out.println("ÉèÖÃ·¢ĞÅÈË£¡");
+		System.out.println("ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½Ë£ï¿½");
 		try 
 		{
-			mimeMsg.setFrom(new InternetAddress(from)); // ÉèÖÃ·¢ĞÅÈË
+			mimeMsg.setFrom(new InternetAddress(from)); // ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½
 			return true;
 		} 
 		catch (Exception e) 
@@ -210,10 +210,10 @@ public class SendAttachment {
 		}
 	}
 	/**
-	 * ÊÕ¼şÈË
+	 * ï¿½Õ¼ï¿½ï¿½ï¿½
 	 *
 	 * @param String
-	 *            to ÊÕ¼şÈËÓÊÏä
+	 *            to ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return boolean
 	 */
@@ -232,10 +232,10 @@ public class SendAttachment {
 		}
 	}
 	/**
-	 * ³­ËÍÓÊ¼ş
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
 	 *
 	 * @param String
-	 *            ³­ËÍµØÖ·
+	 *            ï¿½ï¿½ï¿½Íµï¿½Ö·
 	 * 
 	 * @return boolean
 	 */
@@ -251,7 +251,7 @@ public class SendAttachment {
 	// }
 	/**
 	 *
-	 * ·¢ËÍÓÊ¼ş
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
 	 * 
 	 */
 	public boolean sendout() 
@@ -260,19 +260,19 @@ public class SendAttachment {
 		{
 			mimeMsg.setContent(mp);
 			mimeMsg.saveChanges();
-			System.out.println("ÕıÔÚ·¢ËÍÓÊ¼ş....");
+			System.out.println("ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½....");
 			// mailSession = Session.getInstance(props, null);
 			Transport transport = mailSession.getTransport("smtp");
 			transport.connect((String) props.get("mail.smtp.host"), UserName, PassWord);
 			transport.sendMessage(mimeMsg, mimeMsg.getRecipients(Message.RecipientType.TO));
 			// transport.send(mimeMsg);
-			System.out.println("·¢ËÍÓÊ¼ş³É¹¦£¡");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
 			transport.close();
 			return true;
 		} 
 		catch (Exception e)
 		{
-			System.err.println("ÓÊ¼ş·¢ËÍÊ§°Ü£¡" + e);
+			System.err.println("ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" + e);
 			return false;
 		}
 	}
@@ -282,20 +282,20 @@ public class SendAttachment {
 	public static void main(String[] args)
 	{
 		String mailbody = "<meta http-equiv=Content-Type content=text/html;charset=utf-8>"
-				+ "<div align=center>ÓÊ¼şÕıÎÄÄÚÈİ</div>" + "<a href='http://www.baidu.com/'>°Ù¶Èaaaaaaaaaaaaaashabi</a>";
+				+ "<div align=center>ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</div>" + "<a href='http://www.baidu.com/'>ï¿½Ù¶ï¿½aaaaaaaaaaaaaashabi</a>";
 		SendAttachment themail = new SendAttachment("smtp.qq.com");
 		themail.setNeedAuth(true);
-		if (themail.setSubject("ÓÊ¼şÖ÷Ìâ") == false)
+		if (themail.setSubject("ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½") == false)
 			return;
 		if (themail.setBody(mailbody) == false)
 			return;
 		if (themail.setTo("834162364@qq.com") == false)
 			return;
-		// ÒÔÉÏÊÇÊÕ¼şÈË´¦Àí
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½Ë´ï¿½ï¿½ï¿½
 		if (themail.setFrom("834162364@qq.com") == false)
 			return;
-		// ·¢ËÍ¸½¼ş
-		// if(themail.addFileAffix("d:\\¹¤×÷ÈÕÖ¾20100524.xls") == false) return;
+		// ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½
+		// if(themail.addFileAffix("d:\\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾20100524.xls") == false) return;
 		themail.setNamePass("834261263@qq.com", "ivyelwftblplbcij");
 		if (themail.sendout() == false)
 			return;

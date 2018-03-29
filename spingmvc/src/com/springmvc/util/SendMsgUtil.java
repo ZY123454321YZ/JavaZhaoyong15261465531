@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.NameValuePair;
@@ -9,7 +9,7 @@ public class SendMsgUtil
 	{
 		HttpClient client = new HttpClient();
 		PostMethod post = new PostMethod("http://gbk.api.smschinese.cn");
-		post.addRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=gbk");// ÔÚÍ·ÎÄ¼þÖÐÉèÖÃ×ªÂë
+		post.addRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=gbk");// ï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½
 		NameValuePair[] data = { new NameValuePair("Uid", "zhaoyong"), new NameValuePair("Key", "7453263zy"),
 				new NameValuePair("smsMob", "17305196199"), new NameValuePair("smsText", "[zhaoyong]") };
 		post.setRequestBody(data);
@@ -22,7 +22,7 @@ public class SendMsgUtil
 			System.out.println(h.toString());
 		}
 		String result = new String(post.getResponseBodyAsString().getBytes("gbk"));
-		System.out.println(result); // ´òÓ¡·µ»ØÏûÏ¢×´Ì¬
+		System.out.println(result); // ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢×´Ì¬
 		post.releaseConnection();
 	}
 }

@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import javax.media.ConfigureCompleteEvent;
 import javax.media.ControllerEvent;
 import javax.media.ControllerListener;

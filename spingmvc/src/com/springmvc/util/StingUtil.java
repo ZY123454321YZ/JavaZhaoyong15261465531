@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -19,13 +19,13 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class StingUtil {
-	// list×ªÊý×é
+	// list×ªï¿½ï¿½ï¿½ï¿½
 	public static <T> Object[] ListParseArray(List<T> list) 
 	{
 		Object[] o = list.toArray();
 		return o;
 	}
-	// String·Ç¿ÕÐ£Ñé
+	// Stringï¿½Ç¿ï¿½Ð£ï¿½ï¿½
 	public static boolean isEmpty(String message) 
 	{
 		if (message.isEmpty() || message.equals("")) 
@@ -34,7 +34,7 @@ public class StingUtil {
 		}
 		return true;
 	}
-	// Object·Ç¿ÕÐ£Ñé
+	// Objectï¿½Ç¿ï¿½Ð£ï¿½ï¿½
 	public static boolean isObjectEmpty(Object o)
 	{
 		if (o == null) 
@@ -43,7 +43,7 @@ public class StingUtil {
 		}
 		return false;
 	}
-	// Êý×é×ªlist
+	// ï¿½ï¿½ï¿½ï¿½×ªlist
 	public static boolean arraytoList(Object[] obj)
 	{
 		if (obj.length <= 0) 
@@ -60,7 +60,7 @@ public class StingUtil {
 		}
 		return true;
 	}
-	// ±éÀúHashMap
+	// ï¿½ï¿½ï¿½ï¿½HashMap
 	public static Object[] getHashMapValue(Map map)
 	{
 		Object[] objects = new Object[map.size()];
@@ -74,7 +74,7 @@ public class StingUtil {
 		}
 		return objects;
 	}
-	// ·µ»Øhashmap keyÖµ¼¯ºÏ
+	// ï¿½ï¿½ï¿½ï¿½hashmap keyÖµï¿½ï¿½ï¿½ï¿½
 	public static Object[] getHashKey(Map map) 
 	{
 		if (map.size() <= 0)
@@ -94,18 +94,18 @@ public class StingUtil {
 		SimpleDateFormat format = new SimpleDateFormat(param);
 		return format.parse(date);
 	}
-	// Ð£Ñéµç»°ºÅÂë
+	// Ð£ï¿½ï¿½ç»°ï¿½ï¿½ï¿½ï¿½
 	public static boolean isMobile(String mobile)
 	{
 		Pattern p = null;
 		Matcher m = null;
 		boolean b = false;
-		p = Pattern.compile("^[1][3,4,5,7,8][0-9]*$"); // ÑéÖ¤ÊÖ»úºÅ
+		p = Pattern.compile("^[1][3,4,5,7,8][0-9]*$"); // ï¿½ï¿½Ö¤ï¿½Ö»ï¿½ï¿½ï¿½
 		m = p.matcher(mobile);
 		b = m.matches();
 		return b;
 	}
-	// Ð£ÑéÉí·ÝÖ¤ºÅÂë
+	// Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
 	public static boolean isShenFenZhen(String mobile) 
 	{
 		Pattern p = null;
@@ -131,20 +131,20 @@ public class StingUtil {
 	public static void main(String[] args) throws Exception
 	{
 //		InputStream ins = null;
-//		String[] cmd = new String[] { "cmd.exe", "/c", "F:\\apache-maven-3.2.5\\bin\\a.bat" }; // ÃüÁî
+//		String[] cmd = new String[] { "cmd.exe", "/c", "F:\\apache-maven-3.2.5\\bin\\a.bat" }; // ï¿½ï¿½ï¿½ï¿½
 //		try
 //		{
 //			Process process = Runtime.getRuntime().exec(cmd);
-//			ins = process.getInputStream(); // »ñÈ¡Ö´ÐÐcmdÃüÁîºóµÄÐÅÏ¢
+//			ins = process.getInputStream(); // ï¿½ï¿½È¡Ö´ï¿½ï¿½cmdï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 //			BufferedReader reader = new BufferedReader(new InputStreamReader(ins));
 //			String line = null;
 //			while ((line = reader.readLine()) != null)
 //			{
-//				System.out.println(line); // Êä³ö
+//				System.out.println(line); // ï¿½ï¿½ï¿½
 //			}
 //			int exitValue = process.waitFor();
-//			System.out.println("·µ»ØÖµ£º" + exitValue);
-//			process.getOutputStream().close(); // ²»ÒªÍü¼ÇÁËÒ»¶¨Òª¹Ø
+//			System.out.println("ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½" + exitValue);
+//			process.getOutputStream().close(); // ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Òªï¿½ï¿½
 //		} 
 //		catch (Exception e) 
 //		{

@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 
 import java.io.File;
 import java.io.FileInputStream;

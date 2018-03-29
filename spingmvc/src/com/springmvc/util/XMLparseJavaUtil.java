@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -6,17 +6,18 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import org.apache.log4j.Logger;
-import com.huawei.entity.User;
+
+import com.springmvc.entity.User;
 public class XMLparseJavaUtil {
 	private static Logger logger = Logger.getLogger(XMLparseJavaUtil.class);
 	public static boolean parseXML(String path, Object... args) {
 		File f = new File(path);
-		// 声明JAXBContext上下文对象
+		// 锟斤拷锟斤拷JAXBContext锟斤拷锟斤拷锟侥讹拷锟斤拷
 		JAXBContext context;
 		try 
 		{
 			context = JAXBContext.newInstance(User.class);
-			// 通过上下文创建java转XML的对象Marshaller
+			// 通锟斤拷锟斤拷锟斤拷锟侥达拷锟斤拷java转XML锟侥讹拷锟斤拷Marshaller
 			Marshaller m = context.createMarshaller();
 			User puser = new User();
 			puser.setId((int) args[0]);

@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,16 +13,16 @@ public class KafkaConsumer {
 	private final ConsumerConnector consumer;
 	private KafkaConsumer() {
 		Properties props = new Properties();
-		// zookeeper ÅäÖÃ
+		// zookeeper ï¿½ï¿½ï¿½ï¿½
 		props.put("zookeeper.connect", "192.168.0.103:2181");
-		// group ´ú±íÒ»¸öÏû·Ñ×é
+		// group ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		props.put("group.id", "jd-group");
-		// zkÁ¬½Ó³¬Ê±
+		// zkï¿½ï¿½ï¿½Ó³ï¿½Ê±
 		props.put("zookeeper.session.timeout.ms", "4000");
 		props.put("zookeeper.sync.time.ms", "200");
 		props.put("auto.commit.interval.ms", "1000");
 		props.put("auto.offset.reset", "smallest");
-		// ÐòÁÐ»¯Àà
+		// ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½
 		props.put("serializer.class", "kafka.serializer.StringEncoder");
 		ConsumerConfig config = new ConsumerConfig(props);
 		consumer = kafka.consumer.Consumer.createJavaConsumerConnector(config);

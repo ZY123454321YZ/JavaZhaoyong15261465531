@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 public interface JDBCUti <T extends Object>{
 	public boolean insert(Object...args);
  	public boolean delete(Object...args);

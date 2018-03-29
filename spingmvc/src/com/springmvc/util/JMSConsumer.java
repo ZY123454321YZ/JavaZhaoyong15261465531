@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;

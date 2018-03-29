@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,7 +21,7 @@ public class MysqlJDBCUtilone implements JDBCUti {
 		try 
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			System.out.println("Êý¾Ý¿â¼ÓÔØ³É¹¦");
+			System.out.println("ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Ø³É¹ï¿½");
 			Properties pro = PropertiesUtil.getByName("jdbc1.properties");
 			String url = (String) pro.get("url");
 			String user = (String) pro.get("user");

@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;

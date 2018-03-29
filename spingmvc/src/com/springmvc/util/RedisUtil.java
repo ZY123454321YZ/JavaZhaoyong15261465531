@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -12,20 +12,20 @@ public class RedisUtil {
 	private static int PORT = 6379;
 
 	private static int TIMEOUT = 1000;
-	// ×î´óÁ¬½ÓÊý
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private static int MAX_ACTIVE = 1024;
 
 	private static JedisPool POOL = null;
 
 	private static Jedis redis = null;
 
-	// ¿ØÖÆÒ»¸öpool×î¶àÓÐ¶àÉÙ¸ö×´Ì¬Îªidle(¿ÕÏÐµÄ)µÄjedisÊµÀý£¬Ä¬ÈÏÖµÒ²ÊÇ8¡£
+	// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½poolï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ù¸ï¿½×´Ì¬Îªidle(ï¿½ï¿½ï¿½Ðµï¿½)ï¿½ï¿½jedisÊµï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ÖµÒ²ï¿½ï¿½8ï¿½ï¿½
 	private static int MAX_IDLE = 200;
 
-	// µÈ´ý¿ÉÓÃÁ¬½ÓµÄ×î´óÊ±¼ä£¬µ¥Î»ºÁÃë£¬Ä¬ÈÏÖµÎª-1£¬±íÊ¾ÓÀ²»³¬Ê±¡£Èç¹û³¬¹ýµÈ´ýÊ±¼ä£¬ÔòÖ±½ÓÅ×³öJedisConnectionException£»
+	// ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¬ï¿½ï¿½Î»ï¿½ï¿½ï¿½ë£¬Ä¬ï¿½ï¿½ÖµÎª-1ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½Ê±ï¿½ä£¬ï¿½ï¿½Ö±ï¿½ï¿½ï¿½×³ï¿½JedisConnectionExceptionï¿½ï¿½
 	private static int MAX_WAIT = 10000;
 
-	// ÔÚborrowÒ»¸öjedisÊµÀýÊ±£¬ÊÇ·ñÌáÇ°½øÐÐvalidate²Ù×÷£»Èç¹ûÎªtrue£¬ÔòµÃµ½µÄjedisÊµÀý¾ùÊÇ¿ÉÓÃµÄ£»
+	// ï¿½ï¿½borrowÒ»ï¿½ï¿½jedisÊµï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½validateï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªtrueï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½jedisÊµï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ÃµÄ£ï¿½
 	private static boolean TEST_ON_BORROW = true;
 
 	private final Object o = new Object();
@@ -81,7 +81,7 @@ public class RedisUtil {
 	 * @param key
 	 * @param start
 	 * @param end
-	 * @return ½ØÈ¡×Ö·û´®
+	 * @return ï¿½ï¿½È¡ï¿½Ö·ï¿½ï¿½ï¿½
 	 */
 	public String getSubString(String key, int startOffset, int endOffset) 
 	{
@@ -90,7 +90,7 @@ public class RedisUtil {
 	/**
 	 * 
 	 * @param key
-	 * @return ÓÃÓÚÉèÖÃÖ¸¶¨ key µÄÖµ£¬²¢·µ»Ø key µÄ¾ÉÖµ
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ key ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ key ï¿½Ä¾ï¿½Öµ
 	 */
 	public String getOldValue(String key, String value)
 	{

@@ -1,4 +1,5 @@
-package com.huawei.util;
+package com.springmvc.util;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,98 +10,85 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
+
 public class FTPFileUtil {
 	private static FTPClient client = new FTPClient();
 	private static FileInputStream inputStream = null;
 	private static FileOutputStream outputStream = null;
+
 	/**
-	 * FTP ÉÏ´«
+	 * FTP ï¿½Ï´ï¿½
+	 * 
 	 * @param f
 	 * @param path
 	 * @param username
 	 * @param password
 	 * @return
 	 */
-	public static boolean fileUpLoad(File f,String username,String password)
-	{   
+	public static boolean fileUpLoad(File f, String username, String password) {
 		try {
 			client.connect("192.168.101.130");
 			client.login(username, password);
-			if(!FTPReply.isPositiveCompletion(client.getReplyCode()))
-			{
-				System.out.println("FTP Á¬½ÓÊ§°Ü");
-			}
-			else 
-			{
-				System.out.println("FTP Á¬½Ó³É¹¦ " + "Á¬½Ó³É¹¦»Ø¸´Âë£º" + client.getReplyCode());
+			if (!FTPReply.isPositiveCompletion(client.getReplyCode())) {
+				System.out.println("FTP ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
+			} else {
+				System.out.println("FTP ï¿½ï¿½ï¿½Ó³É¹ï¿½ " + "ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½Ø¸ï¿½ï¿½ë£º" + client.getReplyCode());
 			}
 			inputStream = new FileInputStream(f);
-			// ÉèÖÃÉÏ´«Ä¿Â¼  
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½Ä¿Â¼
 			client.changeWorkingDirectory("/home/root123/");
 			client.makeDirectory("zhaoyong");
 			client.changeWorkingDirectory("/home/root123/zhaoyong");
 			client.setBufferSize(1024 * 1024 * 1024);
 			client.setControlEncoding("GBK");
-			// ÉèÖÃÎÄ¼þÀàÐÍ£¨¶þ½øÖÆ£©
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½
 			client.setFileType(FTPClient.BINARY_FILE_TYPE);
 			client.enterLocalPassiveMode();
-			client.storeFile("test.sql",inputStream);
+			client.storeFile("test.sql", inputStream);
 			inputStream.close();
 			client.logout();
-		} 
-		catch (SocketException e) 
-		{
+		} catch (SocketException e) {
 			e.printStackTrace();
 			return false;
-		} 
-		catch (IOException e) 
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
 			return false;
 		}
 		return true;
 	}
-	public static boolean fileDownLoad(File f,String hostname,String username,String password,String pathname)
-	{   
-		try
-		{
+
+	public static boolean fileDownLoad(File f, String hostname, String username, String password, String pathname) {
+		try {
 			client.connect(hostname);
 			client.login(username, password);
-			
-			if(!FTPReply.isPositiveCompletion(client.getReplyCode()))
-			{   
+
+			if (!FTPReply.isPositiveCompletion(client.getReplyCode())) {
 				client.disconnect();
-				System.out.println("FTP Á¬½ÓÊ§°Ü");
+				System.out.println("FTP ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
+			} else {
+				System.out.println("FTP ï¿½ï¿½ï¿½Ó³É¹ï¿½");
 			}
-			else 
-			{
-				System.out.println("FTP Á¬½Ó³É¹¦");
-			}
-			//ÉèÖÃÏÂÔØÄ¿Â¼
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼
 			client.changeWorkingDirectory(pathname);
 			client.setBufferSize(1024 * 24);
 			client.setControlEncoding("GBK");
-			
-			//ÉèÖÃÎÄ¼þÀàÐÍ£¨¶þ½øÖÆ£©
+
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½
 			client.setFileType(FTPClient.BINARY_FILE_TYPE);
 			client.enterLocalPassiveMode();
 			outputStream = new FileOutputStream(f);
-			client.retrieveFile("test.sql",outputStream);
+			client.retrieveFile("test.sql", outputStream);
 			outputStream.close();
-		} 
-		catch (SocketException e)
-		{
+		} catch (SocketException e) {
 			return false;
-		} 
-		catch (IOException e)
-		{
+		} catch (IOException e) {
 			return false;
 		}
 		return true;
 	}
-	public static void main(String[] args)
-	{
+
+	public static void main(String[] args) {
 		File f = new File("E:\\distribution-karaf-0.3.0-Lithium.zip");
-		fileUpLoad(f,"root123","123456");
+		fileUpLoad(f, "root123", "123456");
 	}
 }

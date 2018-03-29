@@ -1,4 +1,4 @@
-package com.huawei.util;
+package com.springmvc.util;
 import java.util.Properties;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
@@ -12,11 +12,11 @@ public class KafkaProducer {
 	public final static String TOPIC = "TEST-TOPIC";
 	private KafkaProducer() {
 		Properties props = new Properties();
-		// ´Ë´¦ÅäÖÃµÄÊÇkafkaµÄ¶Ë¿Ú
+		// ï¿½Ë´ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½kafkaï¿½Ä¶Ë¿ï¿½
 		props.put("metadata.broker.list", "192.168.0.103:9092");
-		// ÅäÖÃvalueµÄÐòÁÐ»¯Àà
+		// ï¿½ï¿½ï¿½ï¿½valueï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½
 		props.put("serializer.class", "kafka.serializer.StringEncoder");
-		// ÅäÖÃkeyµÄÐòÁÐ»¯Àà
+		// ï¿½ï¿½ï¿½ï¿½keyï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½
 		props.put("key.serializer.class", "kafka.serializer.StringEncoder");
 		// request.required.acks
 		// 0, which means that the producer never waits for an acknowledgement from the
