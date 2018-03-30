@@ -19,6 +19,7 @@
 	</context:component-scan>
 	<!--1.配置数据源c3p0 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 指定 Hibernate 核心配置文件的位置 -->
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="user" value="root" />
 		<property name="password" value="123456" />
@@ -27,7 +28,7 @@
 	</bean>
 	<!--2.SessionFactory 类：Local -->
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="hibernateProperties">
 			<props>
@@ -35,7 +36,7 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hbm2ddl.auto">update</prop>
-				<prop key="hibernate.dialect"> org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<!--with current thread bind session -->
 				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext
 				</prop>
@@ -44,16 +45,24 @@
 		<!-- hibernate采用注解的形式 配置 -->
 		<property name="packagesToScan">
 			<list>
-				<value>com.hpe.bean</value>
+				<value>com.springmvc.entity</value>
+			</list>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.springmvc.entity.User</value>
+				<value>com.springmvc.entity.CouponCode</value>
+				<value>com.springmvc.entity.OperationData</value>
 			</list>
 		</property>
 	</bean>
-	<!-- 5.事务管理器 -->
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+	<!-- 3.template配置 将sessionFactory注入到template -->
+	<bean id="template" class="org.springframework.orm.hibernate4.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-
-	<!--6.事务 -->
-	<tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+	<!-- 5.事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 </beans>
