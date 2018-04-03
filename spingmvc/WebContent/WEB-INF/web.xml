@@ -4,7 +4,7 @@
   <!-- 加载spring的上下文 -->
   <context-param>
   	<param-name>contextConfigLocation</param-name>
-  	<param-value>classpath:applicationContext.xml</param-value>
+  	<param-value>classpath*:/applicationContext.xml</param-value>
   </context-param>
   <!-- 配置过滤器，解决POST乱码问题 -->
   <filter>

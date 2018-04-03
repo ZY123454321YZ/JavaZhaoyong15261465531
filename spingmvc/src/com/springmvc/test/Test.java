@@ -1,19 +1,18 @@
 package com.springmvc.test;
-
-import org.hibernate.internal.SessionFactoryImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.springmvc.dao.CouponCodeDao;
-
-import scala.languageFeature.implicitConversions;
+import com.springmvc.dao.UserDao;
+import com.springmvc.entity.User;
 
 public class Test {
 	public static void main(String[] args) {
-		ApplicationContext ac=new ClassPathXmlApplicationContext("applicationContext.xml");
-		CouponCodeDao userDao=(CouponCodeDao) ac.getBean("CouponCodeDao");
-//        System.out.println(userDao);
-//        System.out.println(userDao.getCouponCode("1576").get(0).getCodeNumber());
+		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+		UserDao userDao = (UserDao) ac.getBean("UserDao");
+		User user = new User();
+		user.setName("李四光");
+		user.setPassword("112233");
+		userDao.saveUser(user);
+//		System.out.println(userDao.getUsers("from User").get(0).getName());
 	}
 
 }

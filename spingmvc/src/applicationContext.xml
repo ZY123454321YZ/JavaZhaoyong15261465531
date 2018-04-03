@@ -18,17 +18,23 @@
 	<context:component-scan base-package="com.springmvc.*">
 	</context:component-scan>
 	<!--1.配置数据源c3p0 -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<!-- 指定 Hibernate 核心配置文件的位置 -->
-		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="user" value="root" />
-		<property name="password" value="123456" />
-		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8" />
+	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"> -->
+	<!-- 指定 Hibernate 核心配置文件的位置 -->
+	<!-- <property name="driverClass" value="com.mysql.jdbc.Driver" /> <property 
+		name="user" value="root" /> <property name="password" value="123456" /> <property 
+		name="jdbcUrl" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8" 
+		/> </bean> -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/test"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
 	</bean>
+
 	<!--2.SessionFactory 类：Local -->
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="hibernateProperties">
 			<props>
@@ -36,10 +42,10 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hbm2ddl.auto">update</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<!--with current thread bind session -->
-				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext
-				</prop>
+				<!-- <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext 
+					</prop> -->
 			</props>
 		</property>
 		<!-- hibernate采用注解的形式 配置 -->
@@ -57,12 +63,32 @@
 		</property>
 	</bean>
 	<!-- 3.template配置 将sessionFactory注入到template -->
-	<bean id="template" class="org.springframework.orm.hibernate4.HibernateTemplate">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
+	<bean id="template" class="org.springframework.orm.hibernate4.HibernateTemplate"> 
+		<property name="sessionFactory" ref="sessionFactory"></property> </bean>
 	<!-- 5.事务管理器 -->
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
+	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"> 
+		<property name="sessionFactory" ref="sessionFactory"></property> </bean>
+	<!-- 声明事务管理 -->
+	<!-- 配置事务管理器 -->
+<!-- 	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean> -->
+	<!-- 开启通过注解@Transactional管理事务 -->
+	<tx:annotation-driven transaction-manager="txManager"
+		proxy-target-class="true" /> 
+	<aop:config>
+		<!-- 设置 pointCut 表示哪些方法要加入事务处理 -->
+		<aop:pointcut id="allMethods" expression="execution(* com.springmvc.dao.*.*(..))" />
+		<!-- 通过 advisor 来确定具体要加入事务控制的方法 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allMethods" />
+	</aop:config>
+	<!-- 配置事务通知 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="save*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="get*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
 </beans>
