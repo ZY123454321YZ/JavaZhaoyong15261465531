@@ -1,5 +1,4 @@
 package com.springmvc.entity;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,23 +7,23 @@ import javax.persistence.Table;
 
 /**
  * 
- * @author ZhaoYong ��Ӫ����ͳ�Ʊ�
+ * @author ZhaoYong 运营数据统计表
  *
  */
 @Entity
 @Table(name = "operationdata")
 public class OperationData {
-	// ����
+	// 日期
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String date;
-	// �����û���
+	// 在线用户数
 	private String countUser;
-	// ����ʱ��
+	// 在线时长
 	private String countDate;
-	// ��½ʱ��
+	// 登陆时间
 	private String startDate;
-	// ע��ʱ��
+	// 注销时间
 	private String endDate;
 
 	public String getCountUser() {

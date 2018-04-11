@@ -9,7 +9,7 @@
 <script type="text/javascript" src="../jquery/jquery.min.js"></script>
 <script >
 function doCompare(){
-	var path = "../CheckTest.do?"+Math.random();
+	var path = "../YZMServlet.do?"+Math.random();
 	$("#pic").attr('src',path);
  /* $.ajax({
     async : false,
@@ -65,7 +65,7 @@ function doCompare(){
 							<tr>
 								<td align="right">验证码：</td>
 								<td height="24" colspan="2"><input type="text" name = "yzm" >
-								<img id="pic" src="../CheckTest.do"> 
+								<img id="pic" src="../YZMServlet.do"> 
 								<a  id="AjaxBtn" onclick="doCompare();">换一张</a>
 								</td>
 							</tr>

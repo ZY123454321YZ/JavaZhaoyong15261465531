@@ -1,5 +1,4 @@
 package com.springmvc.entity;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 /**
  * 
  * @author ZhaoYong
- * �û���
+ * 用户表
  *
  */
 public class User {

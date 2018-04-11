@@ -1,37 +1,35 @@
 package com.springmvc.dao;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import com.springmvc.entity.OperationData;
 
-import com.springmvc.entity.User;
-@Repository("UserDao")
-public class UserDao {
-
+@Repository("OperationDataDao")
+public class OperationDataDao {
 	@Autowired
 	HibernateTemplate template;
+
 	@Transactional
-	public void saveUser(User user) {
-		template.save(user);
+	public void saveOperationData(OperationData data) {
+		template.save(data);
 	}
+
 	@Transactional
-	public List<User> getUsers(String hql) {
-		List<User> list = (List<User>) template.find(hql);
+	public List<OperationData> getOperationData(String hql) {
+		List<OperationData> list = (List<OperationData>) template.find(hql);
 		return list;
 	}
+
 	@Transactional
-	public boolean deleteUser(User user) {
-		try 
-		{
-			template.delete(user);
+	public boolean deleteOperationData(OperationData data) {
+		try {
+			template.delete(data);
 			return true;
-		} 
-		catch (Exception e) 
-		{
+		} catch (Exception e) {
 			return false;
-		}
+		} 
 	}
 
 }

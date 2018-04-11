@@ -10,7 +10,7 @@ import javax.persistence.Table;
 /**
  * 
  * @author ZhaoYong
- * �齱��
+ * 抽奖表
  *
  */
 public class CouponCode 
@@ -33,9 +33,4 @@ public class CouponCode
 	public void setCodeNumber(String codeNumber) {
 		this.codeNumber = codeNumber;
 	}
-	
-	
-	
-	
-
 }
