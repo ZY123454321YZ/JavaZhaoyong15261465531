@@ -4,31 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="../jquery/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="../jquery/jquery-2.1.0.js"></script>
-<script type="text/javascript" src="../jquery/jquery.min.js"></script>
-<script >
+<script type="text/javascript" src="../jquery/jquery-2.1.0.min.js"></script>
+<script>
 function doCompare(){
 	var path = "../YZMServlet.do?"+Math.random();
 	$("#pic").attr('src',path);
- /* $.ajax({
-    async : false,
-    cache : false,
-    type : 'get',
-    contentType: "image/jpeg",
-    url : "http://localhost:8080/GoShoping/CheckTest.do",
-    error : function() {
-        alert('smx失败 ');
-    },
-    success : function(data) {
-         $("#content-wrapper").html(data); 
-        alert(data); 
-         $('#pic').innerHTML=data; 
-        $('#test').html(data); 
-         $('#AjaxBtn').html(data.msg); 
-    } 
-}); 
-        */
 	     }
 </script>
 <title>借贷宝</title>
@@ -50,7 +31,7 @@ function doCompare(){
 			<div class="Login_L"></div>
 			<div class="Login_R">
 				<div class="login_zc">
-					<form name='form1' method="post" action='../Login.do'>
+					<form name='form1' method="post" action='../controller/login'>
 						<table width="100%" border="0" cellpadding="2" cellspacing="2">
 							<tr>
 								<td width="50" align="right">用户名：</td>
@@ -74,7 +55,7 @@ function doCompare(){
 								<td width="106" height="45" valign="middle"><input
 									type="submit" value="登陆" onclick="validate()" /></td>
 								<td width="74" height="48" valign="middle"><a
-									href="pages/regst.jsp" class="Blue">免费注册</a></td>
+									href="../controller/regst" class="Blue">免费注册</a></td>
 							</tr>
 						</table>
 					</form>

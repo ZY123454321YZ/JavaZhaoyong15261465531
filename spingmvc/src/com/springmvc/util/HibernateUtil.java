@@ -2,7 +2,6 @@ package com.springmvc.util;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,29 +10,29 @@ import org.hibernate.cfg.Configuration;
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 	/**
-	 * @return ï¿½ï¿½È¡ï¿½á»°ï¿½ï¿½ï¿½ï¿½
+	 * @return »ñÈ¡»á»°¹¤³§
 	 */
 	public static SessionFactory getSessionFactory() 
 	{
-		// ï¿½ï¿½Ò»ï¿½ï¿½:ï¿½ï¿½È¡Hibernateï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ hibernamte.cfg.xmlï¿½Ä¼ï¿½
+		// µÚÒ»²½:¶ÁÈ¡HibernateµÄÅäÖÃÎÄ¼þ hibernamte.cfg.xmlÎÄ¼þ
 		// Configuration con=
 		// new Configuration().configure();
 		Configuration conf = new Configuration();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ¼ÓÔØÖ÷ÅäÖÃ
 		conf.configure();
 		// new AnnotationConfiguration().configure();
-		// //ï¿½Ú¶ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+		// //µÚ¶þ²½:´´½¨·þÎñ×¢²á¹¹½¨Æ÷¶ÔÏó£¬Í¨¹ýÅäÖÃ¶ÔÏóÖÐ¼ÓÔØËùÓÐµÄÅäÖÃÐÅÏ¢
 		// ServiceRegistryBuilder regbulider=new
 		// ServiceRegistryBuilder().applySettings(con.getProperties());
-		// //ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½
+		// //´´½¨×¢²á·þÎñ
 		// ServiceRegistry reg=regbulider.buildServiceRegistry();
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½á»°ï¿½ï¿½ï¿½ï¿½
+		// µÚÈý²½:´´½¨»á»°¹¤³§
 		// SessionFactory sessionFactory=con.buildSessionFactory(reg);
 		SessionFactory sessionFactory = conf.buildSessionFactory();
 		return sessionFactory;
 	}
 	/**
-	 * @return ï¿½ï¿½È¡ï¿½á»°ï¿½ï¿½ï¿½ï¿½
+	 * @return »ñÈ¡»á»°¶ÔÏó
 	 */
 	public static Session getSession() 
 	{
@@ -41,7 +40,7 @@ public class HibernateUtil {
 	}
 	/**
 	 * @param obj
-	 *            ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 *            Ìí¼ÓÊý¾Ý
 	 * @return
 	 */
 	public static boolean add(Object obj)
@@ -57,7 +56,7 @@ public class HibernateUtil {
 		return result;
 	}
 	/**
-	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Îªï¿½Þ¸Äµï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½
+	 * @return ¸üÐÂÊý¾Ý ²ÎÊýÎªÐÞ¸ÄµÄÖ÷¼üid¶ÔÏó
 	 */
 	public static boolean update(Object object)
 	{
@@ -76,7 +75,7 @@ public class HibernateUtil {
 		{
 			if (tran != null)
 			{
-				// ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½
+				// ÊÂÎï»Ø¹ö
 				tran.rollback();
 			}
 		} 
@@ -84,7 +83,7 @@ public class HibernateUtil {
 		{
 			if (session != null)
 			{
-				// ï¿½Ø±ï¿½session
+				// ¹Ø±Õsession
 				session.close();
 			}
 		}
@@ -93,7 +92,7 @@ public class HibernateUtil {
 	/**
 	 * @param c
 	 * @param obj
-	 *            ï¿½ï¿½Ñ¯Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½
+	 *            ²éÑ¯Ò»ÌõÊý¾Ý¸ù¾ÝÖ÷¼üµÄidºÅ
 	 * @return
 	 */
 	public static Object get(Class c, int obj) 
@@ -113,7 +112,7 @@ public class HibernateUtil {
 		{
 			if (session != null) 
 			{
-				// ï¿½Ø±ï¿½session
+				// ¹Ø±Õsession
 				session.close();
 			}
 		}
@@ -121,7 +120,7 @@ public class HibernateUtil {
 	}
 	/**
 	 * @param obj
-	 * @return É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @return É¾³ýÊý¾Ý
 	 */
 	public static boolean delete(Object obj)
 	{
@@ -140,7 +139,7 @@ public class HibernateUtil {
 		{
 			if (tran != null)
 			{
-				// ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½
+				// ÊÂÎï»Ø¹ö
 				tran.rollback();
 			}
 		} 
@@ -148,7 +147,7 @@ public class HibernateUtil {
 		{
 			if (session != null)
 			{
-				// ï¿½Ø±ï¿½session
+				// ¹Ø±Õsession
 				session.close();
 			}
 		}
@@ -156,11 +155,11 @@ public class HibernateUtil {
 	}
 	/**
 	 * @param <T>
-	 *            ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
+	 *            ²éÑ¯¶àÌõ¼ÇÂ¼
 	 * @param sql
-	 *            sqlï¿½ï¿½ï¿½
+	 *            sqlÓï¾ä
 	 * @param param
-	 *            ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 *            ²ÎÊýÊý×é
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -197,7 +196,7 @@ public class HibernateUtil {
 	/**
 	 * @param sql
 	 * @param param
-	 *            ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
+	 *            ²éÑ¯µ¥Ìõ¼ÇÂ¼
 	 * @return
 	 */
 	public static Object queryOne(String sql,String[]param)
@@ -236,7 +235,7 @@ public class HibernateUtil {
 	 * @param param
 	 * @param page
 	 * @param size
-	 * @return Êµï¿½Ö·ï¿½Ò³ï¿½ï¿½Ñ¯
+	 * @return ÊµÏÖ·ÖÒ³²éÑ¯
 	 */
 	@SuppressWarnings("unchecked")
 	public static List queryByPage(String sql, int page, int size) 
@@ -254,7 +253,7 @@ public class HibernateUtil {
 			// query.setString(i,param[i]);
 			// }
 			// }
-			// É¸Ñ¡ï¿½ï¿½ï¿½ï¿½
+			// É¸Ñ¡ÌõÊý
 			query.setFirstResult((page - 1) * size);
 			query.setMaxResults(size);
 			list = query.list();
@@ -276,7 +275,7 @@ public class HibernateUtil {
 	/**
 	 * @param hql
 	 * @param pras
-	 * @returnï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½
+	 * @return·µ»ØÊý¾Ý¸öÊý
 	 */
 	public static int getCount(String hql) 
 	{

@@ -33,5 +33,9 @@ public class UserDao {
 			return false;
 		}
 	}
+	@Transactional
+	public List<User> getOneUser(String hql,Object[]obj) {
+		return (List<User>) template.find(hql,obj);
+	}
 
 }

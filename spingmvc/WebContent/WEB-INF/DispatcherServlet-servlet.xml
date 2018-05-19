@@ -21,11 +21,12 @@
 	</context:component-scan>
 	<!-- 静态资源过滤 -->
 	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources mapping="/jquery/" location="/jquery/**"/>
 	<!-- 视图渲染 jsp/freemaker/velocity -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 制定页面存放的路径 -->
-		<property name="prefix" value="/WEB-INF/pages/"></property>
+		<property name="prefix" value="/jsp/"></property>
 		<!-- 文件的后缀 -->
 		<property name="suffix" value=".jsp"></property>
 	</bean>

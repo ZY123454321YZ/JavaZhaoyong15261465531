@@ -1,26 +1,35 @@
 package com.springmvc.service;
+
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.springmvc.util.HibernateUtil;
-public class LoginService {
-	public void doService(HttpServletRequest request) throws Exception {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.springmvc.dao.UserDao;
+import com.springmvc.entity.User;
+
+@Service
+public class LoginService implements LoginServiceInterface {
+	@Autowired
+	private UserDao dao;
+
+	public void doService(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-		String sessMessage = (String) session.getAttribute("VALIDATECODE");
-		String yzm = request.getParameter("yzm");
+		String sessMessage = ((String) session.getAttribute("VALIDATECODE")).toUpperCase();
+		String yzm = request.getParameter("yzm").toUpperCase();
 		if (!sessMessage.equals(yzm)) {
-			throw new Exception("��֤�����,��������д��֤�룡");
+			throw new Exception("验证码错误,请重新填写验证码！");
 		}
 		String userName = request.getParameter("userid");
 		String password = request.getParameter("pwd");
-		HibernateUtil util = new HibernateUtil();
-		String[] message = new String[] { userName, password };
-		String sql = "from User where name = ? and password = ? ";
-		Object object = util.queryOne(sql, message);
-		if (object == null) {
-			throw new Exception("�û������������,��������д��");
+		String[]args = new String[] {password};
+		String hql = "from User  where password = ? " ;
+		List<User> user =  dao.getOneUser(hql,args);
+		System.out.println(user.get(0).getName());
+		if (user == null) {
+			throw new Exception("用户名或密码错误,请重新填写！");
 		}
 		return;
 	}
-
 }

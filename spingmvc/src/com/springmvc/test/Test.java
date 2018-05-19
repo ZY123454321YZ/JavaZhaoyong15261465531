@@ -13,13 +13,15 @@ public class Test {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 //		UserDao userDao = (UserDao) ac.getBean("UserDao");
 //		List<User>list = userDao.getUsers("from User");
+//		System.out.println(list.get(0).getName());
+//		List<User>list = userDao.getOneUser("from User", args)
 //		userDao.deleteUser(list.get(2));
 //		OperationDataDao dataDao = (OperationDataDao) ac.getBean("OperationDataDao");
 //		List<OperationData>list = dataDao.getOperationData("from OperationData");
 //		System.out.println(list.get(0).getCountUser());
-		CouponCodeDao dao = (CouponCodeDao) ac.getBean("CouponCodeDao");
-		List<CouponCode>code = (List<CouponCode>) dao.getCouponCode("from CouponCode");
-		System.out.println(code.get(0).getCodeNumber());
+//		CouponCodeDao dao = (CouponCodeDao) ac.getBean("CouponCodeDao");
+//		List<CouponCode>code = (List<CouponCode>) dao.getCouponCode("from CouponCode");
+//		System.out.println(code.get(0).getCodeNumber());
 //		User user = new User();
 //		user.setName("李四光");
 //		user.setPassword("112233");
