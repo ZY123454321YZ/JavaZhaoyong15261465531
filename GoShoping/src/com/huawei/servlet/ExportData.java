@@ -2,6 +2,8 @@ package com.huawei.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -42,7 +44,7 @@ public class ExportData extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             ExportDateService service = new ExportDateService();
-            String filePath = request.getParameter("key1");
+            String filePath = request.getParameter("file");
             if("".equals(filePath)|| filePath == null) 
             {
             	request.getSession().setAttribute("error","导出路径不存在或错误！");
@@ -51,16 +53,23 @@ public class ExportData extends HttpServlet {
             OperationDataService dataService = new OperationDataService();
     		List<com.huawei.entity.OperationData> dataList = dataService.getData();
     		List<String> arrayList = new ArrayList<String>();
+    		List<String> nameList = new LinkedList<String>();
     		for(int index = 0;index < dataList.size();index++) 
     		{
     			OperationData data = dataList.get(index);
-    			arrayList.add(data.getCountDate());
-    			arrayList.add(data.getCountUser());
     			arrayList.add(data.getDate());
-    			arrayList.add(data.getEndDate());
+    			arrayList.add(data.getCountUser());
+    			arrayList.add(data.getCountDate());
     			arrayList.add(data.getStartDate());
+    			arrayList.add(data.getEndDate());
     		}
-            boolean flag = service.export(filePath, arrayList);
+    		String append = "日期";
+    		StringBuffer buffer = new StringBuffer(append);
+    		buffer.append(":在线人数").append(":在线时长").
+    		append(":登陆时间").append(":注销时间");
+    		String[]message = buffer.toString().split(":");
+    		nameList = Arrays.asList(message);
+            boolean flag = service.export(filePath, arrayList,nameList);
 		
 	}
 

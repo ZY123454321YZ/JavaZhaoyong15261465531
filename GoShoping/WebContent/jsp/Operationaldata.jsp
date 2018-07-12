@@ -30,10 +30,11 @@ function createShowing(data) {
 	var dataArray = JSON.parse(data);
     for (var i = 0; i < dataArray.length; i++) 
     {
-		tableStr = tableStr + "<tr><td>" + dataArray[i].countUser + "</td>"
+		tableStr = tableStr + "<tr><td>" + dataArray[i].date + "</td>" + "<td>" +
+		dataArray[i].countUser + "</td>"
 		+ "<td>" + dataArray[i].countDate + "</td>" + "<td>"
-		+ dataArray[i].startDate + "</td>" +"<td>"+dataArray[i].endDate+"</td>"+ 
-		"<td>"+dataArray[i].date +"</td></tr>";
+		 +dataArray[i].startDate+"</td>" + 
+		"<td>"+dataArray[i].endDate +"</td></tr>";
     }
         tableStr = tableStr + "</table>";
          //将动态生成的table添加的事先隐藏的div中. 
@@ -47,7 +48,6 @@ function createShowing(data) {
     		async : false,
     		cache : false,
     		type : 'post',
-    		data:{ key1: key}, 
     		url : "http://localhost:8080/GoShoping/ExportData.do?",
     		error : function() {
     			alert('smx失败 ');
@@ -64,8 +64,11 @@ function createShowing(data) {
 <body>
 	<div id="test"></div>
 	<div>
-	<button  onclick="exportData()" >导出文件路径</button>
-	<input type="text"  name = "export" id = "export"/>
+	<form action='../ExportData.do' method="post" >      
+	 导出数据：<br/>
+         导出数据文件：<input type="text" name="file"><br/>
+     <input type="submit" value="提交">
+     </form>
 	</div>
 </body>
 </html>

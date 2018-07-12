@@ -15,7 +15,7 @@ public class CsvImExportUtil {
      * @param dataList Êý¾Ý 
      * @return 
      */  
-    public static boolean exportCsv(File file, List<String> dataList)
+    public static boolean exportCsv(File file, List<String> dataList,List<String>nameList)
     {  
         boolean isSucess=false;  
           
@@ -29,11 +29,27 @@ public class CsvImExportUtil {
             osw = new OutputStreamWriter(out, "gbk");  
             bw =new BufferedWriter(osw);  
             if(dataList!=null && !dataList.isEmpty())
-            {  
-                for(String data : dataList)
-                {  
-                    bw.append(data).append("\r");  
-                }  
+            {   
+            	 for(String data : nameList)
+                 {  
+                     bw.append(data).append("\t\t");  
+                 }  
+            	 for(int index = 0 ;index < dataList.size(); index ++) 
+            	 {
+            		 if(index % nameList.size() != 0 ) 
+                	 {
+                		 bw.append(dataList.get(index)).append("\t\t\t\t");  
+                	 }
+                	 else 
+                	 {
+                		 bw.append("\r");
+                		 bw.append(dataList.get(index)).append("\t\t\t\t");  
+                	 }
+            		 
+            		 
+            		 
+            	 }
+                    
             }  
             isSucess=true;  
         } 
