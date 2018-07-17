@@ -46,7 +46,7 @@ public class OperationData extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		OperationDataService service = new OperationDataService();
-		List<com.huawei.entity.OperationData> list = service.getData();
+		List<com.huawei.entity.OperationData> list = service.getValues();
 		Writer out = response.getWriter();
 		JSONArray array = JSONArray.fromObject(list);
 		out.write(array.toString());

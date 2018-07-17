@@ -1,9 +1,11 @@
 package com.huawei.service;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.huawei.entity.CouponCode;
 import com.huawei.util.HibernateUtil;
-public class CouponCodeService {
+public class CouponCodeService extends SuperService{
+	@Override
 	public void doService(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String sql = "from CouponCode where codenumber = ?";
 		HibernateUtil util = new HibernateUtil();
@@ -24,6 +26,11 @@ public class CouponCodeService {
 			response.sendRedirect("/GoShoping/html/index.html");
 		}
 		
+	}
+
+	@Override
+	public <T> List<T> getValues() {
+		return null;
 	}
 
 }

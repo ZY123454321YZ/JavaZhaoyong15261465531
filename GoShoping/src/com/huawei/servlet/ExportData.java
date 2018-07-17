@@ -51,7 +51,7 @@ public class ExportData extends HttpServlet {
     			response.sendRedirect("jsp/error.jsp");
             }
             OperationDataService dataService = new OperationDataService();
-    		List<com.huawei.entity.OperationData> dataList = dataService.getData();
+    		List<com.huawei.entity.OperationData> dataList = dataService.getValues();
     		List<String> arrayList = new ArrayList<String>();
     		List<String> nameList = new LinkedList<String>();
     		for(int index = 0;index < dataList.size();index++) 

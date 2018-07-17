@@ -43,7 +43,7 @@ public class QueryUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Writer out = response.getWriter();
 		QueryUserService service = new QueryUserService();
-		List<User>list = service.getUser();
+		List<User>list = service.getValues();
 		System.out.println(list.size());
 		//list Èû½ø jsonÖÐ·µ»Øjsp
 		 JSONArray jsonArray = JSONArray.fromObject(list);

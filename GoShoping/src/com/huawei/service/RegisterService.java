@@ -1,13 +1,12 @@
 package com.huawei.service;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.huawei.entity.User;
 import com.huawei.util.HibernateUtil;
-public class RegisterService {
+public class RegisterService extends SuperService{
+	@Override
 	public void doService(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PrintWriter writer = response.getWriter();
 		response.setContentType("text/html");
@@ -36,6 +35,11 @@ public class RegisterService {
 		user.setDate(date1);
 		util.add(user);
 
+	}
+
+	@Override
+	public <T> List<T> getValues() {
+		return null;
 	}
 	      
 	        
