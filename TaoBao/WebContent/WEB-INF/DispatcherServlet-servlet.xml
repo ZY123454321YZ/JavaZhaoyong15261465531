@@ -22,6 +22,7 @@
 	<!-- 静态资源过滤 -->
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 	<mvc:resources mapping="/jquery/" location="/jquery/**"/>
+	<mvc:resources location="/images/" mapping="/images/**" />
 	<!-- 视图渲染 jsp/freemaker/velocity -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
