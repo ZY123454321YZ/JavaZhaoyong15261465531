@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//WebContent/jsp/Clothes.jsp=UTF-8
+encoding//src/com/springmvc/service/LoginService.java=UTF-8
+encoding//src/com/springmvc/servlet/YZMServlet.java=UTF-8
+encoding//src/com/springmvc/util/CsvImExportUtil.java=UTF-8
+encoding//src/com/springmvc/util/FTPFileUtil.java=gbk
+encoding//src/com/springmvc/util/HibernateUtil.java=gbk
+encoding/<project>=UTF-8
