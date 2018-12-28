@@ -1,12 +1,16 @@
 package com.huawei.controller;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Iterator;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.huawei.service.CouponCodeService;
+import net.sf.json.JSONObject;
 
 /**
  * Servlet implementation class CouponCode
@@ -35,14 +39,27 @@ public class CouponCode extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-          CouponCodeService service = new CouponCodeService();
+//          CouponCodeService service = new CouponCodeService();
           try 
-          {
-			service.doService(request, response);
+          {          	
+        	BufferedReader streamReader = new BufferedReader( new InputStreamReader(request.getInputStream(), "UTF-8"));
+			StringBuilder responseStrBuilder = new StringBuilder();
+			String inputStr;
+			while ((inputStr = streamReader.readLine()) != null)
+			responseStrBuilder.append(inputStr);
+			JSONObject jsonObject = JSONObject.fromObject(responseStrBuilder.toString());
+        	Iterator<String> it = jsonObject.keys(); 
+        	while(it.hasNext())
+        	{
+        	String key = it.next(); 
+        	String value = jsonObject.getString(key);    
+//        	System.out.println("¼ü: "+key+",Öµ:"+value);
+        	System.out.println(""+key+","+value);
+        	}
 		  } 
           catch (Exception e) 
           {   
-        	  response.sendRedirect("/GoShoping/html/error.html");
+        	  throw e;
 		  }
 	}
 

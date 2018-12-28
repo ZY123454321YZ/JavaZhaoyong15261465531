@@ -27,7 +27,7 @@ public class SendAttachment {
 	}
 	public SendAttachment(String smtp) 
 	{
-		MailHost = "smtp.qq.com";
+		MailHost = "smtp.163.com";
 		setSmtpHost(smtp);
 		createMimeMessage();
 	}
@@ -43,11 +43,11 @@ public class SendAttachment {
 			props = System.getProperties();
 		}
 		props.put("mail.smtp.host", hostName); // 设置SMTP主机 hostName="smtp.163.com";
-		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.port", "25");
 		// 此处填写你的账号
-		props.put("mail.user", "834162364@qq.com");
+		props.put("mail.user", "15261465531@163.com");
 		// 此处的密码就是前面说的16位STMP口令
-		props.put("mail.password", "ivyelwftblplbcij");
+		props.put("mail.password", "834162364zy");
 		// 构建授权信息，用于进行SMTP进行身份验证
 		Authenticator authenticator = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
@@ -282,21 +282,21 @@ public class SendAttachment {
 	public static void main(String[] args)
 	{
 		String mailbody = "<meta http-equiv=Content-Type content=text/html;charset=utf-8>"
-				+ "<div align=center>邮件正文内容</div>" + "<a href='http://www.baidu.com/'>百度aaaaaaaaaaaaaashabi</a>";
-		SendAttachment themail = new SendAttachment("smtp.qq.com");
+				+ "<div align=center>邮件正文内容</div>" + "<p>告警rules  ： </p>";
+		SendAttachment themail = new SendAttachment("smtp.163.com");
 		themail.setNeedAuth(true);
 		if (themail.setSubject("邮件主题") == false)
 			return;
 		if (themail.setBody(mailbody) == false)
 			return;
-		if (themail.setTo("834162364@qq.com") == false)
+		if (themail.setTo("15261465531@163.com") == false)
 			return;
 		// 以上是收件人处理
-		if (themail.setFrom("834162364@qq.com") == false)
+		if (themail.setFrom("15261465531@163.com") == false)
 			return;
 		// 发送附件
-		// if(themail.addFileAffix("d:\\工作日志20100524.xls") == false) return;
-		themail.setNamePass("834261263@qq.com", "ivyelwftblplbcij");
+		// if(themail.addFileAffix("d:\\工作日志20140524.xls") == false) return;
+		themail.setNamePass("15261465531@163.com", "834162364zy");
 		if (themail.sendout() == false)
 			return;
 	}
