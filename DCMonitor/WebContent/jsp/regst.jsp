@@ -51,17 +51,16 @@
 
 	}
 </script>
-<title>京东网上商城</title>
+<title>服务器监控系统</title>
 </head>
 <body>
 	<div class="header wrapfix">
 		<div class="help">
 			<a href="login.jsp" target="_blank" title="登陆"> <font size="5"
-				color="blue">登陆</font>
+				color="blue">登陆入口</font>
 			</a> | <a href="###" target="_blank" title="修改密码"> <font size="5"
 				color="blue">修改密码</font></a> <span class="tel"
 				style="font-size: 15pt; font-family: 黑体">
-				<font size="5"  color="green">客服QQ:15261465531</font>
 				</span>
 		</div>
 	</div>

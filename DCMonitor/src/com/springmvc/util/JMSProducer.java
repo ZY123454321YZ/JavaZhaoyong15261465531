@@ -3,12 +3,12 @@ import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.DeliveryMode;
 import javax.jms.Destination;
-import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
+
 /**
  * 消息的生产者（发送者）
  * 
@@ -35,8 +35,9 @@ public class JMSProducer {
 	private static Destination destination;
 	// 消息生产者
 	private static MessageProducer messageProducer = null;
-	public void sendMessage(String messageQueue,String[]pdcerMessage) throws Exception {
-		
+
+	public void sendMessage(String messageQueue, String[] pdcerMessage) throws Exception {
+
 		// 实例化连接工厂
 		connectionFactory = new ActiveMQConnectionFactory(JMSProducer.USERNAME, JMSProducer.PASSWORD,
 				JMSProducer.BROKEURL);
@@ -51,21 +52,16 @@ public class JMSProducer {
 			destination = session.createQueue(messageQueue);
 			// 创建消息生产者
 			messageProducer = session.createProducer(destination);
-			 //设置不持久化  
+			// 设置不持久化
 			messageProducer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 			// 发送消息
-			sendMessage(session, messageProducer,pdcerMessage);
+			sendMessage(session, messageProducer, pdcerMessage);
 			session.commit();
-		} 
-		catch (Exception e) 
-		{
+		} catch (Exception e) {
 			throw e;
-		} 
-		finally
-		{
-			if (connection != null) 
-			{
-					connection.close();
+		} finally {
+			if (connection != null) {
+				connection.close();
 			}
 		}
 	}
@@ -78,21 +74,19 @@ public class JMSProducer {
 	 *            消息生产者
 	 * @throws Exception
 	 */
-	public static void sendMessage(Session session,
-			MessageProducer messageProducer,String...pdcerMessage) throws Exception {
-		    for(int index = 0;index < pdcerMessage.length; index++) 
-		    {
-		    	// 创建一条文本消息
-				TextMessage message = session.createTextMessage(pdcerMessage[index]);
-				// 通过消息生产者发出消息
-				messageProducer.send(message);
-		    }
+	public static void sendMessage(Session session, MessageProducer messageProducer, String... pdcerMessage)
+			throws Exception {
+		for (int index = 0; index < pdcerMessage.length; index++) {
+			// 创建一条文本消息
+			TextMessage message = session.createTextMessage(pdcerMessage[index]);
+			// 通过消息生产者发出消息
+			messageProducer.send(message);
+		}
 	}
-     public static void main(String[] args) throws Exception {
+
+	public static void main(String[] args) throws Exception {
 		JMSProducer producer = new JMSProducer();
-		String[]meStrings = new String[] {"生产者",
-				"不定式","测试"
-		};
-		producer.sendMessage("topic",meStrings);
+		String[] meStrings = new String[] { "aaa","bbb" };
+		producer.sendMessage("zz", meStrings);
 	}
 }

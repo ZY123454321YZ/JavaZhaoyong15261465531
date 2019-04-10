@@ -12,7 +12,7 @@
 		$("#pic").attr('src', path);
 	}
 </script>
-<title>京东网上商城</title>
+<title>服务器监控系统</title>
 </head>
 <body>
 	<div class="header wrapfix">
@@ -21,10 +21,7 @@
 				color="green">首页 </font>
 			</a> <font size="5" color="green">|</font> <a href="###" target="_blank"
 				title="帮助中心"> <font size="5" color="green">帮助中心</font>
-			</a> <span class="tel" style="font-size: 15pt; font-family: 黑体"> <font
-				size="5" color="green">
-				客服QQ:834162364</font>
-			</span>
+			</a> 
 		</div>
 	</div>
 	<div class="clearfix"></div>

@@ -41,7 +41,7 @@ public class LoginController {
 	}
 
 	/**
-	 * 统计运营数据
+	 * 统计设备管理运营数据
 	 * @return /Operationaldata
 	 * @throws Exception 
 	 */
@@ -61,7 +61,7 @@ public class LoginController {
 	}
 
 	/**
-	 * 导出运营数据
+	 * 导出设备管理运营数据
 	 * 
 	 * @return Register service/dao
 	 * @throws Exception 

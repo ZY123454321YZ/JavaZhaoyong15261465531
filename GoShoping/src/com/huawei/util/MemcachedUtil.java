@@ -315,6 +315,11 @@ public class MemcachedUtil {
 		{
 			MemcachedUtil util = new MemcachedUtil();
 			util.set("key", "789");
+			util.set("a", 1);
+			util.set("key11","1234",new Date(1000 * 10));
+			util.flashAll();
+			System.out.println(util.get("a"));
+			System.out.println(util.get("key11"));
 		}
 	}
 }

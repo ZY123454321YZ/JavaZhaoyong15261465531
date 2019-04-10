@@ -2,7 +2,16 @@ package com.huawei.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +51,8 @@ public class CouponCode extends HttpServlet {
 //          CouponCodeService service = new CouponCodeService();
           try 
           {          	
+        	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+      		Date date = new Date();
         	BufferedReader streamReader = new BufferedReader( new InputStreamReader(request.getInputStream(), "UTF-8"));
 			StringBuilder responseStrBuilder = new StringBuilder();
 			String inputStr;
@@ -54,7 +65,7 @@ public class CouponCode extends HttpServlet {
         	String key = it.next(); 
         	String value = jsonObject.getString(key);    
 //        	System.out.println("¼ü: "+key+",Öµ:"+value);
-        	System.out.println(""+key+","+value);
+        	System.out.println(format.format(date) + "--------"+key+","+value );
         	}
 		  } 
           catch (Exception e) 

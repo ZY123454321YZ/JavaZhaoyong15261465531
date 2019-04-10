@@ -1,4 +1,6 @@
 package com.huawei.util;
+import java.util.List;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -95,5 +97,13 @@ public class RedisUtil {
 	public String getOldValue(String key, String value)
 	{
 		return redis.getSet(key, value);
+	}
+	public static void main(String[] args) {
+//		for(int i =0;i<=1023;i++) {
+//			RedisUtil util = new RedisUtil();
+//		}
+		RedisUtil util = new RedisUtil();
+		util.setKey("key", "123");
+		System.out.println(util.getkey("key"));
 	}
 }

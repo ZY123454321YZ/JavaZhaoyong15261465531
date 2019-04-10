@@ -39,7 +39,7 @@ public class JMSConsumer {
 			// 创建session
 			session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			// 创建一个连接HelloWorld的消息队列
-			destination = session.createQueue("topic");
+			destination = session.createQueue("zz");
 			// 创建消息消费者
 			messageConsumer = session.createConsumer(destination);
 //			异步接收/事件驱动接收
@@ -82,8 +82,7 @@ public class JMSConsumer {
 	public static void main(String[] args) throws Exception {
 		JMSConsumer consumer = new JMSConsumer();
 		String message = consumer.receiveMessage();
-		System.out.println(message);
-		
+        System.out.println("message is" + message);		
 	}
 	
 }
