@@ -12,7 +12,7 @@ function doCompare(){
 	$("#pic").attr('src',path);
 	     }
 </script>
-<title>借贷宝</title>
+<title>Pass云</title>
 </head>
 <body>
 	<div class="header wrapfix">
