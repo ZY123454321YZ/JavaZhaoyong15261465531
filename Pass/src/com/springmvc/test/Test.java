@@ -1,5 +1,7 @@
 package com.springmvc.test;
 import java.util.List;
+
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -8,12 +10,13 @@ import com.springmvc.dao.UserDao;
 import com.springmvc.entity.User;
 public class Test {
 	@org.junit.Test
+	@Ignore
 	public void test() 
 	{
-		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-		UserDao userDao = (UserDao) ac.getBean("UserDao");
-		List<User>list = userDao.getUsers("from User");
-		System.out.println(list.get(0).getName());
+//		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+//		UserDao userDao = (UserDao) ac.getBean("UserDao");
+//		List<User>list = userDao.getUsers("from User");
+//		System.out.println(list.get(0).getName());
 	}
 //	public static void main(String[] args) {
 ////		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");

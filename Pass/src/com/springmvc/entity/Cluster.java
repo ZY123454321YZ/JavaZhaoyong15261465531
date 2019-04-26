@@ -1,45 +1,42 @@
 package com.springmvc.entity;
-
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name = "cluster")
 public class Cluster {
+	
 	/**
-	 * 集群ID
+	 * 集群详情id
 	 */
-	private String clusterId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int clusterid;
 	/**
 	 * 集群详情ID
 	 */
+	@Column(name = "clusterDetailId")
 	private int  clusterDetailId;
 	/**
 	 * 节点标签列表
 	 */
-	private List<String>cluLabels;
-	/**
-	 * 集群详情id
-	 */
-	private int clusterid;
-	public String getClusterId() {
-		return clusterId;
+	@Column(name = "cluLabels")
+	private String  cluLabels;
+
+	public String getCluLabels() {
+		return cluLabels;
 	}
-	public void setClusterId(String clusterId) {
-		this.clusterId = clusterId;
+	public void setCluLabels(String cluLabels) {
+		this.cluLabels = cluLabels;
 	}
 	public int getClusterDetailId() {
 		return clusterDetailId;
 	}
 	public void setClusterDetailId(int clusterDetailId) {
 		this.clusterDetailId = clusterDetailId;
-	}
-	public List<String> getCluLabels() {
-		return cluLabels;
-	}
-	public void setCluLabels(List<String> cluLabels) {
-		this.cluLabels = cluLabels;
 	}
 	public int getClusterid() {
 		return clusterid;

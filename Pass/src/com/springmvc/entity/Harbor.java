@@ -1,29 +1,30 @@
 package com.springmvc.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name = "harbor")
 public class Harbor {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int harborId;
 	/**
 	 * Harbor用户名称
 	 */
-	@Column(name = "logoUrl")
+	@Column(name = "harborUser")
 	private String harborUser;
+	
 	/**
 	 * Harbor用户密码
 	 */
-	@Column(name = "logoUrl")
+	@Column(name = "harborPwd")
 	private String harborPwd;
-	/**
-	 * 项目名称
-	 */
-	@Column(name = "logoUrl")
-	private String project;
-	/**
-	 * 回调通知地址
-	 */
-	@Column(name = "logoUrl")
+	
+	@Column(name = "backUrl")
 	private String backUrl;
 	public String getHarborUser() {
 		return harborUser;
@@ -37,17 +38,18 @@ public class Harbor {
 	public void setHarborPwd(String harborPwd) {
 		this.harborPwd = harborPwd;
 	}
-	public String getProject() {
-		return project;
-	}
-	public void setProject(String project) {
-		this.project = project;
-	}
 	public String getBackUrl() {
 		return backUrl;
 	}
 	public void setBackUrl(String backUrl) {
 		this.backUrl = backUrl;
+	}
+	
+	public int getHarborId() {
+		return harborId;
+	}
+	public void setHarborId(int harborId) {
+		this.harborId = harborId;
 	}
 
 }

@@ -56,9 +56,12 @@
 		</property>
 		<property name="annotatedClasses">
 			<list>
+			    <value>com.springmvc.entity.Harbor</value>
 				<value>com.springmvc.entity.User</value>
 				<value>com.springmvc.entity.CouponCode</value>
 				<value>com.springmvc.entity.OperationData</value>
+				<value>com.springmvc.entity.Cluster</value>
+				<value>com.springmvc.entity.Service</value>
 			</list>
 		</property>
 	</bean>
