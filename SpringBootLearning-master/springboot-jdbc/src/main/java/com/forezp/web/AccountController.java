@@ -43,9 +43,9 @@ public class AccountController {
         }
     }
 
-    @RequestMapping(value = "",method = RequestMethod.POST)
-    public  String postAccount( @RequestParam(value = "name")String name,
-                                 @RequestParam(value = "money" )double money){
+    @RequestMapping(value = "add",method = RequestMethod.POST)
+    public  String postAccount( @RequestParam(value = "name",required=false)String name,
+                                 @RequestParam(value = "money", required=false )double money){
         Account account=new Account();
         account.setMoney(money);
         account.setName(name);

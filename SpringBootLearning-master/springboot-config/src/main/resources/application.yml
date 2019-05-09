@@ -9,6 +9,6 @@ my:
 
 spring:
   profiles:
-    active: dev
+    active: pro
 
 
